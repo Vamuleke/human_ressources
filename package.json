@@ -1,0 +1,24 @@
+{
+  "name": "pro-app-cres",
+  "type" : "module",
+  "version": "1.0.0",
+  "description": "Creators :\r     - Donatien\r     - Valère\r     - William\r     - Simeon",
+  "main": "index.js",
+  "scripts": {
+    "start" : "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javals243/cres_pro_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/javals243/cres_pro_app/issues"
+  },
+  "homepage": "https://github.com/javals243/cres_pro_app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
