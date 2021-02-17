@@ -1,8 +1,17 @@
 import React from 'react'
+import Dashboard from './components/Dashboard'
+import Footer from './components/Footer'
+import Nav from './components/Nav'
+import SideBar from './components/SideBar'
 
 const App = () => {
     return (
-        <h1>Hello World</h1>
+        <>
+            <Nav/>
+            <SideBar/>
+            <Dashboard/>
+            <Footer/>
+        </>
     )
 }
 
