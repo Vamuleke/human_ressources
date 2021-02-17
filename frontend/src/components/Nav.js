@@ -5,8 +5,8 @@ const Nav = () => {
     return (
         <nav className="navbar navbar-default navbar-fixed-top">
 			<div className="brand">
-				<Link to="/dashboard">
-					<img src="assets/images/logo-dark.png" alt="CRES Pro App" className="img-responsive logo"/>
+				<Link to="/admin/dashboard">
+					<img src={process.env.PUBLIC_URL + "/assets/images/logo-dark.png"} alt="CRES Pro App" className="img-responsive logo"/>
 				</Link>
 			</div>
 			<div className="container-fluid">
@@ -43,9 +43,9 @@ const Nav = () => {
 							</ul>
 						</li>
 						<li className="dropdown">
-							<a href="#" className="dropdown-toggle" data-toggle="dropdown"><img src="assets/images/user.png" className="img-circle" alt="Avatar"/> <span>Donatien</span> <i className="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" className="dropdown-toggle" data-toggle="dropdown"><img src={process.env.PUBLIC_URL + "/assets/images/user.png"} className="img-circle" alt="Avatar"/> <span>Donatien</span> <i className="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul className="dropdown-menu">
-								<li><a href="#"><i className="lnr lnr-user"></i> <span>Mon Profile</span></a></li>
+								<li><a href="#"><i className="lnr lnr-user"></i> <span>Mon Profil</span></a></li>
 								<li><a href="#"><i className="lnr lnr-cog"></i> <span>Paramètres</span></a></li>
 								<li><a href="#"><i className="lnr lnr-exit"></i> <span>Déconnexion</span></a></li>
 							</ul>
