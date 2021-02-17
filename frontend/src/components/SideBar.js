@@ -8,7 +8,7 @@ const SideBar = () => {
                 <nav>
                     <ul className="nav">
                         <li>
-                            <Link to="/dashboard" lassName="active">
+                            <Link to="/dashboard" className="active">
                                 <i className="lnr lnr-home"></i>
                                 <span>Tableau de bord</span>
                             </Link>
