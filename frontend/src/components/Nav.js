@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Nav = () => {
     return (
         <nav className="navbar navbar-default navbar-fixed-top">
 			<div className="brand">
-				<a href="index.html"><img src="assets/images/logo-dark.png" alt="CRES Pro App" className="img-responsive logo"/></a>
+				<Link to="/dashboard">
+					<img src="assets/images/logo-dark.png" alt="CRES Pro App" className="img-responsive logo"/>
+				</Link>
 			</div>
 			<div className="container-fluid">
 				<div className="navbar-btn">
