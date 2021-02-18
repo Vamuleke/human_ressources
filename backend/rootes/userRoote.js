@@ -1,6 +1,6 @@
 import express from "express";
-import User from "../models/userModel";
-import { getToken } from "../util";
+import User from "../models/userModel.js";
+import { getToken } from "../util.js";
 import expressAsyncHandler from 'express-async-handler'
 const rooter = express.Router();
 rooter.post('/signin',expressAsyncHandler(async (req,resp)=>{
@@ -17,7 +17,7 @@ resp.send({
   token:getToken(signinUser)
 })
   }else{
-          resp.status(401).send({message:"invalid user or password"})
+          resp.status(401).send({message:"nom d'utilisateur ou mot de passe incorrect"})
   }
 }))
 rooter.post('/register',async (req,resp)=>{

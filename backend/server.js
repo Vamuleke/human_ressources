@@ -1,9 +1,9 @@
 import express from 'express';
-import config from "./config"
+import config from "./config.js"
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
+import userRoote from './rootes/userRoote.js'
 import mongoose from 'mongoose'
-import userRoote from './rootes/userRoote'
 dotenv.config();
 const mongodbUrl = config.MONGODB_URL
 mongoose.connect(mongodbUrl,{
@@ -15,9 +15,8 @@ const app = express();
 //utilisation du middleware body-parser
 app.use(bodyParser.json())
 //--end of body-parser
-app.use("/api/users",userRoote)
-app.use("/api/dashboard",dashboardRoote)
+app.use('/api/users',userRoote)
 app.use((error, req, resp, next) => {
     resp.status(500).send({ message: error.message })
 })
-app.listen(5000,()=>{console.log("server run in the port http://localhost:5000")});
+app.listen(8070,()=>{console.log("server run in the port http://localhost:8070")});
