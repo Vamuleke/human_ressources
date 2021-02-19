@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Agent = () => {
+const AgentHome = () => {
     return (
         <>
             <div className="main">
                 <div className="main-content">
                     <div className="container-fluid" id="root">
-                        <h1>Agents</h1>
+                        <h1 className="text-center font-weight-bold">Liste des agents</h1>
                     </div>
                 </div>
             </div>
@@ -14,4 +14,4 @@ const Agent = () => {
     )
 }
 
-export default Agent
+export default AgentHome

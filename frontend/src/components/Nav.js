@@ -45,7 +45,11 @@ const Nav = () => {
 						<li className="dropdown">
 							<a href="#" className="dropdown-toggle" data-toggle="dropdown"><img src={process.env.PUBLIC_URL + "/assets/images/user.png"} className="img-circle" alt="Avatar"/> <span>Donatien</span> <i className="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul className="dropdown-menu">
-								<li><a href="#"><i className="lnr lnr-user"></i> <span>Mon Profil</span></a></li>
+								<li>
+									<Link to="/admin/profile">
+										<i className="lnr lnr-user"></i> <span>Mon Profil</span>
+									</Link>
+								</li>
 								<li><a href="#"><i className="lnr lnr-cog"></i> <span>Paramètres</span></a></li>
 								<li><a href="#"><i className="lnr lnr-exit"></i> <span>Déconnexion</span></a></li>
 							</ul>

@@ -1,11 +1,11 @@
 {
   "name": "pro-app-cres",
-  "type" : "module",
+  "type": "module",
   "version": "1.0.0",
   "description": "Creators :\r     - Donatien\r     - Valère\r     - William\r     - Simeon",
   "main": "index.js",
   "scripts": {
-    "start" : "nodemon backend/server.js"
+    "start": "nodemon backend/server.js"
   },
   "repository": {
     "type": "git",
