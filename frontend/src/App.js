@@ -14,7 +14,7 @@ const App = () => {
     return (
         <>
             <Router>
-                <Route path="/admin" render={() => <><Nav/> <SideBar/> <Footer/></>} />
+                <Route path="/admin" component={() => <><Nav/> <SideBar/> <Footer/></>} />
                 <Switch>
                     <Route path="/admin/dashboard" component={Dashboard} />
                     <Route exact path="/" component={Login} />
