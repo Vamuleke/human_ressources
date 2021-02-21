@@ -3,6 +3,7 @@ import config from "./config.js"
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
 import userRoote from './rootes/userRoote.js'
+import adminRoute from './rootes/adminRoute.js'
 import mongoose from 'mongoose'
 dotenv.config();
 const mongodbUrl = config.MONGODB_URL
@@ -16,6 +17,7 @@ const app = express();
 app.use(bodyParser.json())
 //--end of body-parser
 app.use('/api/users',userRoote)
+app.use('/api/admin/profile/create',adminRoute)
 app.use((error, req, resp, next) => {
     resp.status(500).send({ message: error.message })
 })

@@ -30,7 +30,7 @@ const submitHandler=(e)=>{
     e.preventDefault();
     dispatch(signin(email,password))
     if(error){
-        toast.warning("Bienvenu ",{position:toast.POSITION.TOP_RIGHT})
+        toast.error(error,{position:toast.POSITION.TOP_RIGHT})
 }else{
     
 }

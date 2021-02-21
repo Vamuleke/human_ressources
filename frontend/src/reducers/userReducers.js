@@ -1,5 +1,5 @@
 
-import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL, USER_SIGN_OUT } from '../constant/constantUser'
+import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL,PROFIL_SAVE_REQUEST,PROFIL_SAVE_SUCCESS,PROFIL_SAVE_FAIL, USER_SIGN_OUT } from '../constant/constantUser'
 function userSigninReducer(state = {}, action) {
     switch (action.type) {
         case USER_SIGNIN_REQUEST:
@@ -17,4 +17,22 @@ function userSigninReducer(state = {}, action) {
 
     }
 }
-export {userSigninReducer}
+
+function userUpdateProfil(state={user: {}},action){
+   
+    switch (action.type) {
+        case PROFIL_SAVE_REQUEST:
+        return {loading:true}
+        case PROFIL_SAVE_SUCCESS:
+        return {loading:false,success:true, user : action.payload};
+         
+        case PROFIL_SAVE_FAIL:
+        return {loading:false,error:action.payload};
+        
+        default :
+        return state;
+    
+    }
+}
+
+export {userSigninReducer,userUpdateProfil}
