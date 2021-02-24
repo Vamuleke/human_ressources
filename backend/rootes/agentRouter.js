@@ -6,6 +6,7 @@ import expressAsyncHandler from 'express-async-handler'
 const agentRouter = express.Router ()
 
 agentRouter.get ('/seed', expressAsyncHandler ( async (request, response) => {
+    await Agent.deleteMany ({})
     const createdAgents = await Agent.insertMany (data.agents)
 
     response.send (createdAgents)

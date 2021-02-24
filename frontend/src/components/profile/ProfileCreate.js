@@ -5,14 +5,15 @@ const ProfileCreate = () => {
         <>
             <div className="main">
                 <div className="main-content">
-                        <div className="card col-md-6">
-                            <div className="card-header h2 text-center">
-                                Mettre à jour mon profil
+                    <div className="col-md-6">
+                        <div className="card mt-4">
+                            <div className="card-header">
+                                <h3 className="font-weight-light text-center">Mettre à jour mon profil</h3>
                             </div>
                             <div className="card-body">
                                 <form>
                                     <div className="form-group">
-                                        <label htmlFor="name">Nom (s)</label>
+                                        <label htmlFor="name">Nom(s)</label>
                                         <input type="text" id="name" className="form-control" />
                                     </div>
 
@@ -30,17 +31,18 @@ const ProfileCreate = () => {
                                 </form>
                             </div>
                         </div>
+                    </div>
 
-                        <div className="col-md-6 text-right">
-        
-                            <div className="card-body text-right">
-                                <div className="col-md-3"></div>
-                                <div className="text-right col-md-6" style={{ marginTop: "30px" }}>
-                                    <img src={process.env.PUBLIC_URL + "/assets/images/user-medium.png"} className="rounded" style={{ border: "2px solid white", borderRadius: "500px" }} width="250" />
-                                </div>
-                                <div className="col-md-3"></div>
+                    <div className="col-md-6 text-right">
+
+                        <div className="card-body text-right">
+                            <div className="col-md-3"></div>
+                            <div className="text-right col-md-6 mt-5">
+                                <img src={process.env.PUBLIC_URL + "/assets/images/user-medium.png"} className="rounded-circle" width="250" />
                             </div>
+                            <div className="col-md-3"></div>
                         </div>
+                    </div>
                 </div>
             </div>
         </>

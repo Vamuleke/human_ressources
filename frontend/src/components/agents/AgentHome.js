@@ -41,7 +41,7 @@ const AgentHome = () => {
                             <div className="card-body">
                                 {loading && <LoadingBox />}
                                 {error && <MessageBox type="danger">{error}</MessageBox>}
-                                <div class="table-responsive">
+                                <div className="table-responsive">
                                 <table className="table text-nowrap table-striped">
                                     <thead>
                                         <tr>
@@ -50,6 +50,8 @@ const AgentHome = () => {
                                             <th scope="col">Nom(s)</th>
                                             <th scope="col">Email</th>
                                             <th scope="col">Date de naissance</th>
+                                            <th scope="col">Nationalité</th>
+                                            <th scope="col">État civil</th>
                                             <th scope="col">Sexe</th>
                                             <th scope="col">Actions</th>
                                         </tr>
@@ -66,6 +68,8 @@ const AgentHome = () => {
                                                             <td>{ag.name}</td>
                                                             <td>{ag.email}</td>
                                                             <td>{moment (ag.birthday).format ("DD-MM-YYYY")}</td>
+                                                            <td>{ag.nationality}</td>
+                                                            <td>{ag.civil_status}</td>
                                                             <td>{ag.sex == 'M' ? "Masculin" : "Féminin"}</td>
                                                             <td>
                                                                 <div className="dropleft">
@@ -73,6 +77,9 @@ const AgentHome = () => {
                                                                         Actions
                                                                     </button>
                                                                     <div className="dropdown-menu border border-dark" aria-labelledby="dropdownMenuButton">
+                                                                        {/* <a className="dropdown-item" href={`/`}><i className="fa fa-info"></i> &nbsp;&nbsp;&nbsp;&nbsp;Détails</a> */}
+                                                                        <Link to={`/admin/agents/${ag._id}`} className="dropdown-item"><i className="fa fa-info"></i> &nbsp;&nbsp;&nbsp;&nbsp;Détails</Link>
+                                                                        <div className="dropdown-divider"></div>
                                                                         <a className="dropdown-item" href="#"><i className="fa fa-edit"></i> &nbsp;Modifier</a>
                                                                         <div className="dropdown-divider"></div>
                                                                         <a className="dropdown-item" href="#"><i className="fa fa-trash"></i> &nbsp;Supprimer</a>

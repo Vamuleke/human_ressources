@@ -9,6 +9,7 @@ import AgentHome from './components/agents/AgentHome'
 import AgentCreate from './components/agents/AgentCreate'
 import ProfileHome from './components/profile/ProfileHome'
 import ProfileCreate from './components/profile/ProfileCreate'
+import AgentDetails from './components/agents/AgentDetails'
 
 const App = () => {
     return (
@@ -20,7 +21,8 @@ const App = () => {
                     <Route exact path="/" component={Login} />
 
                     <Route exact path="/admin/agents" component={AgentHome} />
-                    <Route path="/admin/agents/create" component={AgentCreate} />
+                    <Route exact path="/admin/agents/create" component={AgentCreate} />
+                    <Route path="/admin/agents/:id" component={AgentDetails} />
 
                     <Route exact path="/admin/profile" component={ProfileHome} />
                     <Route path="/admin/profile/create" component={ProfileCreate} />
