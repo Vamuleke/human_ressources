@@ -4,6 +4,7 @@ import dotenv from "dotenv"
 import bodyParser from "body-parser";
 import userRoote from './rootes/userRoote.js'
 import mongoose from 'mongoose'
+import agentRouter from './rootes/agentRouter.js';
 dotenv.config();
 const mongodbUrl = config.MONGODB_URL
 mongoose.connect(mongodbUrl,{
@@ -16,7 +17,9 @@ const app = express();
 app.use(bodyParser.json())
 //--end of body-parser
 app.use('/api/users',userRoote)
+app.use ('/api/agents', agentRouter)
+
 app.use((error, req, resp, next) => {
     resp.status(500).send({ message: error.message })
 })
-app.listen(8070,()=>{console.log("server run in the port http://localhost:8070")});
+app.listen(5000,()=>{console.log("server run in the port http://localhost:5000")});

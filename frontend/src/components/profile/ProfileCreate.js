@@ -5,7 +5,6 @@ const ProfileCreate = () => {
         <>
             <div className="main">
                 <div className="main-content">
-                    <div className="container">
                         <div className="card col-md-6">
                             <div className="card-header h2 text-center">
                                 Mettre à jour mon profil
@@ -42,7 +41,6 @@ const ProfileCreate = () => {
                                 <div className="col-md-3"></div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </>
