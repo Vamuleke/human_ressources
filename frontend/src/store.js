@@ -2,8 +2,13 @@ import {createStore,combineReducers, applyMiddleware,compose} from 'redux';
 import Cookie from "js-cookie";
 import thunk from 'redux-thunk';
 import {  userSigninReducer,userUpdateProfil } from './reducers/userReducers';
-const userInfo = Cookie.getJSON("userInfo") || null;
-const initialState = {userSignin:{userInfo}};
+// const userInfo = Cookie.getJSON("userInfo") || null;
+const initialState = {
+    userSignin:{
+        userInfo:localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")):null
+    }
+};
+
 const reducer = combineReducers({
     userSignin:userSigninReducer,
     updateProfil:userUpdateProfil

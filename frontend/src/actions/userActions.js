@@ -1,5 +1,4 @@
 import Axios from "axios"
-import Cookie from "js-cookie"
 import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL,PROFIL_SAVE_REQUEST, PROFIL_SAVE_SUCCESS, PROFIL_SAVE_FAIL, USER_SIGN_OUT } from '../constant/constantUser'
 const signin = (email, password) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } })
@@ -7,7 +6,8 @@ const signin = (email, password) => async (dispatch) => {
         const { data } = await Axios.post('/api/users/signin', { email, password })
         dispatch({ type: USER_SIGNIN_SUCCESS, payload: data })
         //utilisation des cookies
-        Cookie.set("userInfo", JSON.stringify(data))
+        localStorage.setItem("userInfo",JSON.stringify(data))
+       
     } catch (error) {
         dispatch({
             type: USER_SIGNIN_FAIL, payload: error.response && error.response.data.message
@@ -15,26 +15,21 @@ const signin = (email, password) => async (dispatch) => {
         })
     }
 }
- const UpdateProfil = (user)=> async (dispatch,getState)=>{
+ const UpdateProfil = (user)=> async (dispatch)=>{
 
         try {
-           dispatch({type:PROFIL_SAVE_REQUEST, payload: user}) 
-           const {userSignin : {userInfo}} = getState();
-        
-            const {data} = await Axios.put("/api/admin/profile/create/"+user._id,user,{
-                headers : {
-                    'Authorization' : 'Bearer' + userInfo.token
-              }
-            })
+           dispatch({type:PROFIL_SAVE_REQUEST, payload: user})
+            const {data} = await Axios.put("/api/admin/profile/create/"+user._id,user
+            )
             dispatch({type: PROFIL_SAVE_SUCCESS,payload: data})
-         
+            
         } catch (error) {
             dispatch({type:PROFIL_SAVE_FAIL,payload: error.message}) 
         }
     }
 
 const signout = () => (dispatch) => {
-    Cookie.remove("userInfo");
+  localStorage.removeItem("userInfo");
     dispatch({ type: USER_SIGN_OUT })
 
 }

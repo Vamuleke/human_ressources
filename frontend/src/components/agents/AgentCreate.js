@@ -1,5 +1,4 @@
 import React from 'react'
-import profil from '../../image/essaie.jpg'
 
 const AgentCreate = () => {
     return (

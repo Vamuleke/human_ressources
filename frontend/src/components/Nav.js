@@ -5,8 +5,8 @@ import { signout } from '../actions/userActions';
 const Nav = (props) => {
 	
 	const userSignin=useSelector(state=>state.userSignin);
-	const {userInfo}=userSignin
-	if(!userInfo ){
+	const {userInfo} = userSignin
+	if( !userInfo ){
 		window.location.href="/"
 	}
 	const dispatch=useDispatch()
@@ -54,7 +54,7 @@ const Nav = (props) => {
 							</ul>
 						</li>
 						<li className="dropdown">
-							<a href="#" className="dropdown-toggle" data-toggle="dropdown"><img src={process.env.PUBLIC_URL + "/assets/images/user.png"} className="img-circle" alt="Avatar"/> <span>{userInfo.name}</span> <i className="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="#" className="dropdown-toggle" data-toggle="dropdown"><img src={userInfo.photo} className="img-circle" alt="Avatar"/> <span>{userInfo.name}</span> <i className="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul className="dropdown-menu">
 								<li>
 									<Link to="/admin/profile">

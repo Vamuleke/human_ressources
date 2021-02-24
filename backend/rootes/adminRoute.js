@@ -3,12 +3,13 @@ import User from '../models/userModel.js'
 import { getToken } from '../util.js'
 import expressAsyncHandler from 'express-async-handler'
 const router = express.Router()
-router.put('/:id', async (req, resp) => {
+router.put('/:id',expressAsyncHandler(async (req, resp) => {
   const userId = req.params.id
   const user = await User.findById(userId)
   if (user) {
     user.name = req.body.name
     user.email = req.body.email
+    user.photo = req.body.photo
     const updateProfil = await user.save()
     if (updateProfil) {
       return resp
@@ -17,7 +18,8 @@ router.put('/:id', async (req, resp) => {
     }
   }
 })
-router.get('/:id', async (req, resp) => {
+)
+router.get('/:id',expressAsyncHandler(async (req, resp) => {
   const user = await User.findOne({ _id: req.params.id })
   if (user) {
     resp.send(user)
@@ -25,4 +27,5 @@ router.get('/:id', async (req, resp) => {
     resp.status(404).send({ message: 'Error not found' })
   }
 })
+)
 export default router

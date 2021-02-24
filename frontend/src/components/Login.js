@@ -1,7 +1,5 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {LoadingBox} from  './containts/loadingBox'
-import {MessageBox} from  './containts/messageBox'
 import {signin} from '../actions/userActions'
 import {toast} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"

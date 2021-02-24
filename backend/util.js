@@ -17,7 +17,6 @@ const getToken = (user) => {
 
 const isAuth = (req, res, next) => {
   const token = req.headers.authorization;
-
   if (token) {
     const onlyToken = token.slice(7, token.length);
     jwt.verify(onlyToken, config.JWT_SECRET, (err, decode) => {
@@ -34,11 +33,8 @@ const isAuth = (req, res, next) => {
 };
 
 const isAdmin = (req, res, next) => {
-  console.log(req.user);
-  if (req.user && req.user.isAdmin) {
-    return next();
-  }
-  return res.status(401).send({ message: 'Admin Token is not valid.' });
+  
+ console.log(req.user && req.user.isAdmin)
 };
 
 export { getToken, isAuth, isAdmin };
