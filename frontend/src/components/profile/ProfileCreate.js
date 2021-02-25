@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { UpdateProfil } from '../../actions/userActions.js'
 import profil from '../../image/essaie.jpg'
@@ -19,21 +19,20 @@ const ProfileCreate = () => {
   const submitHandler = e => {
     e.preventDefault()
     dispatch(UpdateProfil({ _id: id, name, email,photo }))
-    console.log(userInfo)
     if (error) {
-      toast.error(error, { position: toast.POSITION.TOP_RIGHT })
+      toast.error(errorM, { position: toast.POSITION.TOP_RIGHT })
     } else {
       toast.success('Profil modifier avec success !', {
         position: toast.POSITION.TOP_RIGHT
       })
     }
-    console.log({userInfo})
+
   }
 
   const imageHandler = e => {
     e.preventDefault()
     const selected = e.target.files[0]
-    const ALLOWER_TYPE = ['image/.png', 'image/jpeg', 'image/jpg']
+    const ALLOWER_TYPE = ['image/png', 'image/jpeg', 'image/jpg']
     if (selected && ALLOWER_TYPE.includes(selected.type)) {
       let reader = new FileReader()
       reader.onloadend = () => {
@@ -41,10 +40,11 @@ const ProfileCreate = () => {
       }
       reader.readAsDataURL(selected)
     } else {
-      setError(true)
-    }
+      toast.error("erreur de format veuillez verifier si c'est une photo ", {
+        position: toast.POSITION.TOP_RIGHT
+    })
   }
-
+  }
   return (
     <>
       <div className='main'>
