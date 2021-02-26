@@ -1,5 +1,5 @@
 
-import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL,PROFIL_SAVE_REQUEST,PROFIL_SAVE_SUCCESS,PROFIL_SAVE_FAIL, USER_SIGN_OUT } from '../constant/constantUser'
+import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL,PROFIL_SAVE_REQUEST,PROFIL_SAVE_SUCCESS,PROFIL_SAVE_FAIL, USER_SIGN_OUT } from '../constants/constantsUser'
 function userSigninReducer(state = {}, action) {
     switch (action.type) {
         case USER_SIGNIN_REQUEST:

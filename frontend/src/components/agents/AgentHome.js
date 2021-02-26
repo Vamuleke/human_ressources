@@ -17,9 +17,6 @@ const AgentHome = () => {
         dispatch(getAgentInfos())
     }, [dispatch])
 
-    console.log("Agent :", agent)
-
-
     return (
         <>
             <div className="main">
@@ -39,8 +36,6 @@ const AgentHome = () => {
                                 </div>
                             </div>
                             <div className="card-body">
-                                {loading && <LoadingBox />}
-                                {error && <MessageBox type="danger">{error}</MessageBox>}
                                 <div className="table-responsive">
                                 <table className="table text-nowrap table-striped">
                                     <thead>
@@ -64,12 +59,12 @@ const AgentHome = () => {
                                                     return (
                                                         <tr key={ag._id}>
                                                             <th scope="row">{++n}</th>
-                                                            <td><img src={ag.photo} width="30" /></td>
+                                                            <td><img src={ag.photo} width="35" height="30"/></td>
                                                             <td>{ag.name}</td>
                                                             <td>{ag.email}</td>
                                                             <td>{moment (ag.birthday).format ("DD-MM-YYYY")}</td>
                                                             <td>{ag.nationality}</td>
-                                                            <td>{ag.civil_status}</td>
+                                                            <td>{ag.civilStatus}</td>
                                                             <td>{ag.sex == 'M' ? "Masculin" : "Féminin"}</td>
                                                             <td>
                                                                 <div className="dropleft">
