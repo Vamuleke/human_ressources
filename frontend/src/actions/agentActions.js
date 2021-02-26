@@ -1,4 +1,4 @@
-import { AGENT_INFOS_FAIL, AGENT_INFOS_SUCCESS, AGENT_INFOS_REQUEST, AGENT_CREATE_REQUEST, AGENT_CREATE_FAIL, AGENT_CREATE_SUCCESS } from '../constants/constantsAgent'
+import { AGENT_INFOS_FAIL, AGENT_INFOS_SUCCESS, AGENT_INFOS_REQUEST, AGENT_CREATE_REQUEST, AGENT_CREATE_FAIL, AGENT_CREATE_SUCCESS, AGENT_SINGLE_DETAILS_REQUEST, AGENT_SINGLE_DETAILS_FAIL, AGENT_SINGLE_DETAILS_SUCCESS } from '../constants/constantsAgent'
 import axios from 'axios'
 
 export const getAgentInfos = () => async (dispatch) => {
@@ -26,5 +26,18 @@ export const createAgent = (name, email, birthday, sex, nationality, civilStatus
 
     } catch (error) {
         dispatch({ type: AGENT_CREATE_FAIL, payload: error.message })
+    }
+}
+
+export const getAgentSingleDetails = (agentId) => async (dispatch) => {
+    dispatch ({type : AGENT_SINGLE_DETAILS_REQUEST, payload : agentId})
+
+    try {
+
+        const {data} = await axios.get (`/api/agents/${agentId}`)
+        dispatch ({type : AGENT_SINGLE_DETAILS_SUCCESS, payload : data})
+
+    } catch (error) {
+        dispatch ({type : AGENT_SINGLE_DETAILS_FAIL, payload : error.message})
     }
 }

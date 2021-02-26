@@ -1,4 +1,4 @@
-import express, { response } from 'express'
+import express, { request, response } from 'express'
 import {data} from '../data.js'
 import Agent from '../models/agentModel.js'
 import expressAsyncHandler from 'express-async-handler'
@@ -22,6 +22,16 @@ agentRouter.post ('/', expressAsyncHandler (async (request, response) => {
     const createdAgent = await Agent.insertMany (request.body)
 
     response.send (createdAgent)
+}))
+
+agentRouter.get ('/:id', expressAsyncHandler (async (request, response) => {
+    const agent = await Agent.findById (request.params.id)
+
+    if (agent) {
+        response.send (agent)
+    } else {
+        response.status (404).send ({message : "Cet agent n'existe pas."})
+    }
 }))
 
 export default agentRouter
