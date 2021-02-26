@@ -36,8 +36,7 @@ const AgentHome = () => {
                                 </div>
                             </div>
                             <div className="card-body">
-                                <div className="table-responsive">
-                                <table className="table text-nowrap table-striped">
+                                <table className="table text-nowrap table-striped table-responsive">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -67,12 +66,11 @@ const AgentHome = () => {
                                                             <td>{ag.civilStatus}</td>
                                                             <td>{ag.sex == 'M' ? "Masculin" : "Féminin"}</td>
                                                             <td>
-                                                                <div className="dropleft">
+                                                                <div className="dropup">
                                                                     <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                                         Actions
                                                                     </button>
                                                                     <div className="dropdown-menu border border-dark" aria-labelledby="dropdownMenuButton">
-                                                                        {/* <a className="dropdown-item" href={`/`}><i className="fa fa-info"></i> &nbsp;&nbsp;&nbsp;&nbsp;Détails</a> */}
                                                                         <Link to={`/admin/agents/${ag._id}`} className="dropdown-item"><i className="fa fa-info"></i> &nbsp;&nbsp;&nbsp;&nbsp;Détails</Link>
                                                                         <div className="dropdown-divider"></div>
                                                                         <a className="dropdown-item" href="#"><i className="fa fa-edit"></i> &nbsp;Modifier</a>
@@ -88,7 +86,6 @@ const AgentHome = () => {
                                         }
                                     </tbody>
                                 </table>
-                                </div>
                             </div>
                         </div>
 
