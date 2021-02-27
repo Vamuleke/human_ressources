@@ -12,6 +12,7 @@ html {
 body {
   margin: 0;
 }
+
 article,
 aside,
 details,
@@ -3027,14 +3028,18 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: 5px auto -webkit-focus-ring-color;
-  outline-offset: -2px;
+  /* outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px; */
+  outline:none;
+  box-shadow:none;
 }
 .btn:hover,
 .btn:focus,
 .btn.focus {
-  color: #333;
-  text-decoration: none;
+  /* color: #333;
+  text-decoration: none; */
+  outline:0;
+  box-shadow:none;
 }
 .btn:active,
 .btn.active {

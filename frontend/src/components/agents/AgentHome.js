@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAgentInfos } from '../../actions/agentActions'
 import LoadingBox from '../LoadingBox'
 import MessageBox from '../MessageBox'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import ReactPaginate from 'react-paginate'
 
 const AgentHome = () => {
 
@@ -12,10 +13,51 @@ const AgentHome = () => {
     const { agent, loading, error } = agentInfos
     const dispatch = useDispatch()
     let n = 0
+   
+    const [pageNumber, setPageNumber] = useState(0)
+    const agentsPerPage = 5
+    const pagesVisited = pageNumber * agentsPerPage
+    const pageCount = !loading && !error ? Math.ceil(agent.length / agentsPerPage) : ''
+    const changePage = ({ selected }) => {
+        setPageNumber(selected)
+    }
+
 
     useEffect(() => {
         dispatch(getAgentInfos())
     }, [dispatch])
+
+    const dispayAgents = loading ? <LoadingBox /> : error ? <MessageBox>Test</MessageBox> : agent.slice(pagesVisited, pagesVisited + agentsPerPage)
+        .map(ag => {
+            
+            return (
+                <tr key={ag._id}>
+                    <th scope="row">{++n}</th>
+                    <td><img src={ag.photo} width="35" height="30" /></td>
+                    <td>{ag.name}</td>
+                    <td>{ag.email}</td>
+                    <td>{moment(ag.birthday).format("DD-MM-YYYY")}</td>
+                    <td>{ag.nationality}</td>
+                    <td>{ag.civilStatus}</td>
+                    <td>{ag.sex == 'M' ? "Masculin" : "Féminin"}</td>
+                    <td>
+                        <div className="dropup">
+                            <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Actions
+                                                                    </button>
+                            <div className="dropdown-menu border border-dark" aria-labelledby="dropdownMenuButton">
+                                <Link to={`/admin/agents/${ag._id}`} className="dropdown-item"><i className="fa fa-info"></i> &nbsp;&nbsp;&nbsp;&nbsp;Détails</Link>
+                                <div className="dropdown-divider"></div>
+                                <a className="dropdown-item" href="#"><i className="fa fa-edit"></i> &nbsp;Modifier</a>
+                                <div className="dropdown-divider"></div>
+                                <a className="dropdown-item" href="#"><i className="fa fa-trash"></i> &nbsp;Supprimer</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            )
+        })
+
 
     return (
         <>
@@ -36,7 +78,8 @@ const AgentHome = () => {
                                 </div>
                             </div>
                             <div className="card-body">
-                                <table className="table text-nowrap table-striped table-responsive">
+
+                                <table id="" className="table text-nowrap table-striped table-responsive">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -51,41 +94,21 @@ const AgentHome = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        {
-                                            loading ? <LoadingBox /> : error ? <MessageBox type="danger">{error}</MessageBox> : (
-                                                agent.map(ag => {
-                                                    return (
-                                                        <tr key={ag._id}>
-                                                            <th scope="row">{++n}</th>
-                                                            <td><img src={ag.photo} width="35" height="30"/></td>
-                                                            <td>{ag.name}</td>
-                                                            <td>{ag.email}</td>
-                                                            <td>{moment (ag.birthday).format ("DD-MM-YYYY")}</td>
-                                                            <td>{ag.nationality}</td>
-                                                            <td>{ag.civilStatus}</td>
-                                                            <td>{ag.sex == 'M' ? "Masculin" : "Féminin"}</td>
-                                                            <td>
-                                                                <div className="dropup">
-                                                                    <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        Actions
-                                                                    </button>
-                                                                    <div className="dropdown-menu border border-dark" aria-labelledby="dropdownMenuButton">
-                                                                        <Link to={`/admin/agents/${ag._id}`} className="dropdown-item"><i className="fa fa-info"></i> &nbsp;&nbsp;&nbsp;&nbsp;Détails</Link>
-                                                                        <div className="dropdown-divider"></div>
-                                                                        <a className="dropdown-item" href="#"><i className="fa fa-edit"></i> &nbsp;Modifier</a>
-                                                                        <div className="dropdown-divider"></div>
-                                                                        <a className="dropdown-item" href="#"><i className="fa fa-trash"></i> &nbsp;Supprimer</a>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    )
-                                                })
-                                            )
-                                        }
+                                        {dispayAgents}
                                     </tbody>
                                 </table>
+                                <div className="text-right">
+                                    <ReactPaginate
+                                        previousLabel="Précédent"
+                                        nextLabel="Suivant"
+                                        pageCount={pageCount}
+                                        onPageChange={changePage}
+                                        containerClassName="pagination"
+                                        previousClassName="page-link"
+                                        nextClassName="page-link"
+                                        activeClassName="font-weight-bold"
+                                    />                               
+                                </div>
                             </div>
                         </div>
 

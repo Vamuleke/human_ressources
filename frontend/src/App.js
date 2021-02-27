@@ -13,7 +13,7 @@ import AgentDetails from './components/agents/AgentDetails'
 
 const App = () => {
     return (
-        <>
+        <div>
             <Router>
                 <Route path="/admin" component={() => <><Nav/> <SideBar/> <Footer/></>} />
                 <Switch>
@@ -29,7 +29,7 @@ const App = () => {
                     
                 </Switch>
             </Router>
-        </>
+        </div>
     )
 }
 
