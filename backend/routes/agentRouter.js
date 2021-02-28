@@ -34,4 +34,19 @@ agentRouter.get ('/:id', expressAsyncHandler (async (request, response) => {
     }
 }))
 
+agentRouter.delete ('/:id', expressAsyncHandler (async (request, response) => {
+    const agent = await Agent.findById (request.params.id)
+
+    if (agent) {
+        Agent.deleteOne ({_id : request.params.id}, (err) => {
+            if (err) {
+                response.send ({message : "Agent non supprimé. Il y a eu une erreur."})
+            }
+        })
+        response.send (agent)
+    } else {
+        response.status (404).send ({message : "Cet agent n'existe pas."})
+    }
+}))
+
 export default agentRouter

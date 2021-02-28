@@ -20,6 +20,8 @@ const AgentCreate = (props) => {
 
   const dispatch = useDispatch ()
 
+
+  // SUBMIT HANDLER
   const submitHandler = (e) => {
     e.preventDefault ()
 
@@ -31,14 +33,23 @@ const AgentCreate = (props) => {
   
       toast.success ('Agent crée avec succès', {position : toast.POSITION.BOTTOM_RIGHT})
   
-      //props.history.push ('/admin/agents')
-
-      console.log (photo)
-
+      clearFields ()
     }
 
   }
 
+  // FONCTION POUR NETTOYER LES CHAMPS
+  const clearFields = () => {
+    setName ('')
+    setEmail ('')
+    setBirthday ('')
+    setNationality ('')
+    setSkills ('')
+    setPhoto ('')
+  }
+
+
+  // FONCTION POUR GERER L'UPLOD DE L'IMAGE
   const uploadPhotoHandler = (e) => {
     e.preventDefault ()
    
