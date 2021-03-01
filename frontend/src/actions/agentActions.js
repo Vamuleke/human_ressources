@@ -1,4 +1,4 @@
-import { AGENT_INFOS_FAIL, AGENT_INFOS_SUCCESS, AGENT_INFOS_REQUEST, AGENT_CREATE_REQUEST, AGENT_CREATE_FAIL, AGENT_CREATE_SUCCESS, AGENT_SINGLE_DETAILS_REQUEST, AGENT_SINGLE_DETAILS_FAIL, AGENT_SINGLE_DETAILS_SUCCESS, AGENT_DELETE_REQUEST, AGENT_DELETE_FAIL, AGENT_DELETE_SUCCESS } from '../constants/constantsAgent'
+import { AGENT_INFOS_FAIL, AGENT_INFOS_SUCCESS, AGENT_INFOS_REQUEST, AGENT_CREATE_REQUEST, AGENT_CREATE_FAIL, AGENT_CREATE_SUCCESS, AGENT_SINGLE_DETAILS_REQUEST, AGENT_SINGLE_DETAILS_FAIL, AGENT_SINGLE_DETAILS_SUCCESS, AGENT_DELETE_FAIL, AGENT_DELETE_SUCCESS, AGENT_UPDATE_SUCCESS, AGENT_UPDATE_FAIL } from '../constants/constantsAgent'
 import axios from 'axios'
 
 export const getAgentInfos = () => async (dispatch) => {
@@ -46,17 +46,21 @@ export const deleteAgent = (agentId) => async (dispatch) => {
 
     try {
         await axios.delete (`/api/agents/${agentId}`)
-        dispatch ({type : AGENT_DELETE_SUCCESS, payload : agentId})
+        const {data} = await axios.get (`/api/agents/`)
+        dispatch ({type : AGENT_DELETE_SUCCESS, payload : data})
     } catch (error) {
-        dispatch ({typerror : AGENT_DELETE_FAIL, payload : error.message})
+        dispatch ({type : AGENT_DELETE_FAIL, payload : error.message})
     }
-    // dispatch (getAgentInfos ())
-    // dispatch ({type : AGENT_DELETE_REQUEST, payload : agentId})
+   
+}
 
-    // try {
-    //     await axios.delete (`/api/agents/${agentId}`)
-    //     dispatch ({type : AGENT_DELETE_SUCCESS, payload : agentId})
-    // } catch (error) {
-    //     dispatch ({type : AGENT_DELETE_FAIL, payload : error.message})
-    // }
+export const updateAgent = (agentId, agentData) => async (dispatch) => {
+
+    try {
+        await axios.put (`/api/agents/${agentId}`, agentData)
+        const {data} = await axios.get (`/api/agents/`)
+        dispatch ({type : AGENT_UPDATE_SUCCESS, payload : data})
+    } catch (error) {
+        dispatch ({type : AGENT_DELETE_FAIL, payload : error.message})
+    }
 }

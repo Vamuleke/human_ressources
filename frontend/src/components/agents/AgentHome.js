@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteAgent, getAgentInfos } from '../../actions/agentActions'
 import LoadingBox from '../LoadingBox'
 import MessageBox from '../MessageBox'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import moment from 'moment'
 import ReactPaginate from 'react-paginate'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import AgentUpdateModal from './AgentUpdateModal'
 
 toast.configure()
 
@@ -26,6 +27,7 @@ const AgentHome = (props) => {
     const changePage = ({ selected }) => {
         setPageNumber(selected)
     }
+    console.log ("PAGE COUNT :", pageCount)
 
     // SUPPRESSION DE L'AGENT
     const agentDelete = (agentId, agentName) => {
@@ -33,18 +35,22 @@ const AgentHome = (props) => {
         if (window.confirm(`Voulez-vraiment supprimer l'agent ${agentName} ?`)) {
             dispatch(deleteAgent(agentId))
             toast.success(`Agent ${agentName} supprimé avec succès`, { position: toast.POSITION.BOTTOM_RIGHT });
-            //dispatch(getAgentInfos())
-
-            //props.history.replace ("/admin/agents")
+            window.location.href = "/admin/agents";
+            // props.history.push ('/admin/dashboard')
+            // props.history.push ('/admin/agents')
         }
 
     }
 
     useEffect(() => {
         dispatch(getAgentInfos())
+
+        return () => {
+
+        }
     }, [dispatch])
 
-    console.log("AGENT :", typeof agent)
+    console.log("DETAILS :", agent)
 
     const dispayAgents = loading ? <LoadingBox /> : error ? <MessageBox type="danger">{error}</MessageBox> : agent.slice(pagesVisited, pagesVisited + agentsPerPage)
         .map(ag => {
@@ -52,13 +58,13 @@ const AgentHome = (props) => {
             return (
                 <tr key={ag._id}>
                     <th scope="row">{++n}</th>
-                    <td><img src={ag.photo} width="35" height="30" /></td>
+                 <td><img src={ag.photo} width="35" height="30" alt=""/></td>
                     <td>{ag.name}</td>
                     <td>{ag.email}</td>
                     <td>{moment(ag.birthday).format("DD-MM-YYYY")}</td>
                     <td>{ag.nationality}</td>
                     <td>{ag.civilStatus}</td>
-                    <td>{ag.sex == 'M' ? "Masculin" : "Féminin"}</td>
+                    <td>{ag.sex === 'M' ? "Masculin" : "Féminin"}</td>
                     <td>
                         <div className="dropup">
                             <button className="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -67,25 +73,15 @@ const AgentHome = (props) => {
                             <div className="dropdown-menu border border-dark" aria-labelledby="dropdownMenuButton">
                                 <Link to={`/admin/agents/${ag._id}`} className="dropdown-item"><i className="fa fa-info"></i> &nbsp;&nbsp;&nbsp;&nbsp;Détails</Link>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#"><i className="fa fa-edit"></i> &nbsp;Modifier</a>
+                                <a className="dropdown-item" href="#update" data-toggle="modal" data-target={`#agentUpdateModal-${ag._id}`}><i className="fa fa-edit"></i> &nbsp;Modifier</a>
+                                {/* <a className="dropdown-item" href={`/admin/agents/update/${ag._id}`}><i className="fa fa-edit"></i> &nbsp;Modifier</a> */}
                                 <div className="dropdown-divider"></div>
-                                {/* <a className="dropdown-item" href="#delete" onClick={
-                                    
-                                    (e) => {
-                                        e.preventDefault ();
-                                        window.confirm (`Voulez-vraiment supprimer l'agent ${ag.name} ?`) && dispatch (deleteAgent (ag._id))
-                                        toast.success (`Agent ${ag.name} supprimé avec succès`, {position : toast.POSITION.BOTTOM_RIGHT})
-                                        // props.history.push ('/admin/dashboard')
-                                        //window.location.href = "/admin/agents"
-                                        test = true
-                                    }
-                                    
-                                }>
-                                <i className="fa fa-trash"></i> &nbsp;Supprimer</a> */}
+
                                 <a className="dropdown-item" href="#delete" onClick={() => agentDelete(ag._id, ag.name)}><i className="fa fa-trash"></i> &nbsp;Supprimer</a>
                             </div>
                         </div>
                     </td>
+                    <AgentUpdateModal agent={{_id : ag._id, name : ag.name, email : ag.email, birthday : ag.birthday, nationality : ag.nationality, skills : ag.skills, civilStatus : ag.civilStatus, sex : ag.sex, photo : ag.photo}} />
                 </tr>
             )
         })
@@ -143,11 +139,13 @@ const AgentHome = (props) => {
                                                     activeClassName="font-weight-bold"
                                                 />
                                             </div>
+
                                         </>
                                     ) : (
-                                        <h3 className="text-center font-weight-lighter">Aucune donnée à afficher.</h3>
-                                    )
+                                            <h3 className="text-center font-weight-lighter">Aucune donnée à afficher.</h3>
+                                        )
                                 }
+
 
                             </div>
                         </div>

@@ -1,5 +1,6 @@
 import Axios from "axios"
 import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL,PROFIL_SAVE_REQUEST, PROFIL_SAVE_SUCCESS, PROFIL_SAVE_FAIL, USER_SIGN_OUT } from '../constants/constantsUser'
+
 const signin = (email, password) => async (dispatch) => {
     dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } })
     try {
@@ -15,6 +16,7 @@ const signin = (email, password) => async (dispatch) => {
         })
     }
 }
+
  const UpdateProfil = (user)=> async (dispatch)=>{
 
         try {
@@ -33,4 +35,5 @@ const signout = () => (dispatch) => {
     dispatch({ type: USER_SIGN_OUT })
 
 }
+
 export {signin,signout,UpdateProfil}
