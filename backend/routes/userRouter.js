@@ -13,6 +13,7 @@ resp.send({
   _id:signinUser.id,
   name:signinUser.name,
   email:signinUser.email,
+  password:signinUser.password,
   photo:signinUser.photo,
   isAdmin:signinUser.isAdmin,
   token:getToken(signinUser)
@@ -33,6 +34,7 @@ resp.send({
   _id:newUser.id,
   name:newUser.name,
   email:newUser.email,
+  password:newUser.password,
   photo:newUser.photo,
   isAdmin:newUser.isAdmin,
   token:getToken(newUser)

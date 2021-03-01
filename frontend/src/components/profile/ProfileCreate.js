@@ -12,7 +12,8 @@ const ProfileCreate = () => {
   const [email, setEmail] = useState(userInfo.email)
   const [name, setName] = useState(userInfo.name)
   const [changePassword, setChangePassword] = useState(false)
-  const [password, setPassword] = useState('')
+  const [password, setPassword] = useState(userInfo.password)
+  const [newpassword, setNewPassword] = useState('')
   const [password_confirmation, setPassword_confirmation] = useState('')
   const [errorM, setError] = useState(userInfo.photo)
   const [photo, setPhoto] = useState(userInfo.photo)
@@ -81,6 +82,16 @@ const ProfileCreate = () => {
                       className='form-control'
                     />
                   </div>
+                  <div className='form-group'>
+                    <label htmlFor='email'>Mot de passe</label>
+                    <input
+                      value = {password}
+                      onChange={e => setPassword(e.target.value)}
+                      type='text'
+                      id='email'
+                      className='form-control'
+                    />
+                  </div>
 
                   <div className='form-group'>
                     <label htmlFor='photo'>Photo</label>
@@ -100,7 +111,7 @@ const ProfileCreate = () => {
                       <Toggle
                         name='changePassword'
                         id='changePassword'
-                        defaultChecked={changePassword}
+                        defaultChecked = {changePassword}
                         onChange={(e)=>setChangePassword(e.target.checked)}
                       />
                     </div>

@@ -13,8 +13,10 @@ const Nav = (props) => {
 	const signoutHandler=()=>{
 		dispatch(signout())
 	}
+	
     return (
         <nav className="navbar navbar-default navbar-fixed-top">
+		{console.log(userSignin)}
 			<div className="brand">
 				<Link to="/admin/dashboard">
 					<img src={process.env.PUBLIC_URL + "/assets/images/logo-dark.png"} alt="CRES Pro App" className="img-responsive logo"/>
