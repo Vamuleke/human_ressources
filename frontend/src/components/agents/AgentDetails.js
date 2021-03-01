@@ -16,7 +16,9 @@ const AgentDetails = (props) => {
         dispatch(getAgentSingleDetails(agentId))
     }, [dispatch])
 
-    const agentDetails = agent ? agent : ''
+    const agentDetails = !loading && !error && agent
+
+
     return (
         <div className="main">
             <div className="main-content">

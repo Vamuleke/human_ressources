@@ -44,11 +44,12 @@ const ProfileCreate = () => {
       }
       reader.readAsDataURL(selected)
     } else {
-      toast.error("erreur de format veuillez verifier si c'est une photo ", {
-        position: toast.POSITION.TOP_RIGHT
-      })
-    }
 
+      alert ('Format de la photo non valide.')
+      // toast.error("Format de la photo non valide", {
+      // position: toast.POSITION.TOP_RIGHT
+      // })
+  }
   }
   return (
     <>
@@ -152,7 +153,7 @@ const ProfileCreate = () => {
                   style={{ marginTop: '30px' }}
                 >
                   <img
-                    src={photo}
+                    src={photo} alt=""
                     className='rounded'
                     style={{ border: '2px solid white', borderRadius: '500px' }}
                     width='250'
