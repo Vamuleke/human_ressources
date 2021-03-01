@@ -17,8 +17,6 @@ const AgentDetails = (props) => {
     }, [dispatch])
 
     const agentDetails = agent ? agent : ''
-
-
     return (
         <div className="main">
             <div className="main-content">

@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { UpdateProfil } from '../../actions/userActions.js'
-import profil from '../../image/essaie.jpg'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Toggle from 'react-toggle'
+import 'react-toggle/style.css'
 const ProfileCreate = () => {
   const userSignin = useSelector(state => state.userSignin)
   const { userInfo } = userSignin
   const [id, setId] = useState(userInfo._id)
   const [email, setEmail] = useState(userInfo.email)
   const [name, setName] = useState(userInfo.name)
+  const [changePassword, setChangePassword] = useState(false)
+  const [password, setPassword] = useState('')
+  const [password_confirmation, setPassword_confirmation] = useState('')
   const [errorM, setError] = useState(userInfo.photo)
   const [photo, setPhoto] = useState(userInfo.photo)
   const dispatch = useDispatch()
@@ -18,7 +22,7 @@ const ProfileCreate = () => {
 
   const submitHandler = e => {
     e.preventDefault()
-    dispatch(UpdateProfil({ _id: id, name, email,photo }))
+    dispatch(UpdateProfil({ _id: id, name, email, photo }))
     if (error) {
       toast.error(errorM, { position: toast.POSITION.TOP_RIGHT })
     } else {
@@ -26,9 +30,8 @@ const ProfileCreate = () => {
         position: toast.POSITION.TOP_RIGHT
       })
     }
-
   }
-
+ 
   const imageHandler = e => {
     e.preventDefault()
     const selected = e.target.files[0]
@@ -42,8 +45,9 @@ const ProfileCreate = () => {
     } else {
       toast.error("erreur de format veuillez verifier si c'est une photo ", {
         position: toast.POSITION.TOP_RIGHT
-    })
-  }
+      })
+    }
+
   }
   return (
     <>
@@ -87,6 +91,40 @@ const ProfileCreate = () => {
                       className='form-control'
                     />
                   </div>
+                  <div className='col-sm-6'>
+                    <div className='form-group'>
+                      <label htmlFor='changePassword'>
+                       Voulez vous changer le mot de passe ?
+                      </label>
+                      <br />
+                      <Toggle
+                        name='changePassword'
+                        id='changePassword'
+                        defaultChecked={changePassword}
+                        onChange={(e)=>setChangePassword(e.target.checked)}
+                      />
+                    </div>
+                  </div>
+                  {changePassword ? (
+                    <React.Fragment>
+                      <div className='col-sm-6'>
+                        <div className='form-group'>
+                          <label>Nouveau mot de passe </label>
+                          <input
+                            type='password'
+                            className='form-control'
+                            name='password'
+                            value={password}
+                            onChange={e=>setPassword(e.target.value)}
+                            placeholder='Nouveau mot de passe'
+                          />
+                        </div>
+                      </div>
+                      <div className='col-sm-6'>
+                      
+                      </div>
+                    </React.Fragment>
+                  ) : null}
 
                   <button type='submit' className='btn btn-primary btn-block'>
                     Valider
@@ -109,6 +147,7 @@ const ProfileCreate = () => {
                     width='250'
                   />
                 </div>
+
                 <div className='col-md-3'></div>
               </div>
             </div>

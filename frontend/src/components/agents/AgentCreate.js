@@ -112,7 +112,7 @@ const AgentCreate = (props) => {
                       <div className="form-group">
                         <label htmlFor="civilStatus">État civil</label>
                         <select id="civilStatus" className="form-control" value={civilStatus} onChange={(e) => setCivilStatus (e.target.value)}>
-                          <option>Célibataire</option>
+                          <option>Célibataire</option> 
                           <option>Marié</option>
                           <option>Divorcé</option>
                           <option>Veuf</option>
