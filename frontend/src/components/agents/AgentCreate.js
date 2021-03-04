@@ -43,11 +43,14 @@ const AgentCreate = (props) => {
           skills[i].step === "" ||
           skills[i].skill === ""
         ) {
-          alert("Veuillez mettre une valeur comprise entre 1 et 100.");
+          alert(
+            'Veuillez mettre une valeur comprise entre 1 et 100 au niveau du champ "Compétences + Niveau"'
+          );
           return false;
         }
       }
 
+      // DISPATCH DE L'ACTION DE MISE A JOUR
       dispatch(
         createAgent(
           name,
@@ -66,19 +69,6 @@ const AgentCreate = (props) => {
       });
     }
   };
-
-  // HELPER POUR LA VALIDATION
-  // const skillsValidate = (skills) => {
-  //   let i = 0;
-  //   let field;
-
-  //   do {
-  //     field = skills [i]
-  //   } while (n < skills.length)
-  //   {
-  //     fff;
-  //   }
-  // };
 
   // FONCTION POUR NETTOYER LES CHAMPS
   const clearFields = () => {
@@ -108,7 +98,7 @@ const AgentCreate = (props) => {
     }
   };
 
-  // FONCTION POUR AJOUTER/SUPPRIMER UN CHAMP SKILLS
+  // FONCTIONS POUR AJOUTER/SUPPRIMER UN CHAMP SKILLS
   const addSkill = () => {
     setSkills([...skills, { skill: "", step: "" }]);
   };
@@ -124,8 +114,6 @@ const AgentCreate = (props) => {
     values.splice(key, 1);
     setSkills(values);
   };
-
-  console.log(skills);
 
   return (
     <>
