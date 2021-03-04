@@ -35,37 +35,50 @@ const AgentCreate = (props) => {
     ) {
       alert("Veuillez remplir tous les champs !");
     } else {
-   
-      skills.forEach((item, index) => {
-        if (item.step <= 0 || item.step > 100 || item.step === "") {
-          alert('Veuillez mettre une valeur comprise entre 1 et 100 pour le champ "Compétences + Niveau"');
-          return
-        } //else {
-        //   // dispatch(
-        //   //   createAgent(
-        //   //     name,
-        //   //     email,
-        //   //     birthday,
-        //   //     sex,
-        //   //     nationality,
-        //   //     civilStatus,
-        //   //     skills,
-        //   //     photo
-        //   //   )
-        //   // );
+      // VALIDATION DES SKILLS
+      for (let i = 0; i < skills.length; i++) {
+        if (
+          skills[i].step <= 0 ||
+          skills[i].step > 100 ||
+          skills[i].step === "" ||
+          skills[i].skill === ""
+        ) {
+          alert("Veuillez mettre une valeur comprise entre 1 et 100.");
+          return false;
+        }
+      }
 
-        //   // toast.success("Agent crée avec succès", {
-        //   //   position: toast.POSITION.BOTTOM_RIGHT,
-        //   // });
-
-        //   //clearFields();
-        // }
-        toast.success("Agent crée avec succès", {
-          position: toast.POSITION.BOTTOM_RIGHT,
-        });
+      dispatch(
+        createAgent(
+          name,
+          email,
+          birthday,
+          sex,
+          nationality,
+          civilStatus,
+          skills,
+          photo
+        )
+      );
+      clearFields();
+      toast.success("Agent crée avec succès", {
+        position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
   };
+
+  // HELPER POUR LA VALIDATION
+  // const skillsValidate = (skills) => {
+  //   let i = 0;
+  //   let field;
+
+  //   do {
+  //     field = skills [i]
+  //   } while (n < skills.length)
+  //   {
+  //     fff;
+  //   }
+  // };
 
   // FONCTION POUR NETTOYER LES CHAMPS
   const clearFields = () => {
@@ -249,7 +262,7 @@ const AgentCreate = (props) => {
                                   type="number"
                                   name="step"
                                   className="form-control form-control-sm mb-1"
-                                  placeholder="Niveau"
+                                  placeholder="Niveau %"
                                   value={sk.step}
                                   onChange={(e) => addSkillHandler(e, key)}
                                 />

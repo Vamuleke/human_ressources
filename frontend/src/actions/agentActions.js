@@ -46,8 +46,8 @@ export const deleteAgent = (agentId) => async (dispatch) => {
 
     try {
         await axios.delete (`/api/agents/${agentId}`)
-        const {data} = await axios.get (`/api/agents/`)
-        dispatch ({type : AGENT_DELETE_SUCCESS, payload : data})
+        //const {data} = await axios.get (`/api/agents/`)
+        dispatch ({type : AGENT_DELETE_SUCCESS, payload : agentId})
     } catch (error) {
         dispatch ({type : AGENT_DELETE_FAIL, payload : error.message})
     }
@@ -61,6 +61,6 @@ export const updateAgent = (agentId, agentData) => async (dispatch) => {
         const {data} = await axios.get (`/api/agents/`)
         dispatch ({type : AGENT_UPDATE_SUCCESS, payload : data})
     } catch (error) {
-        dispatch ({type : AGENT_DELETE_FAIL, payload : error.message})
+        dispatch ({type : AGENT_UPDATE_FAIL, payload : error.message})
     }
 }

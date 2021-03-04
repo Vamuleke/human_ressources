@@ -22,8 +22,8 @@ const AgentHome = (props) => {
     // PAGINATION
     const [pageNumber, setPageNumber] = useState(0)
     const agentsPerPage = 5
-    const pagesVisited = pageNumber * agentsPerPage
-    const pageCount = !loading && !error && agent && Math.ceil(agent.length / agentsPerPage)
+    let pagesVisited = pageNumber * agentsPerPage
+    let pageCount = !loading && !error && agent && Math.ceil(agent.length / agentsPerPage)
     const changePage = ({ selected }) => {
         setPageNumber(selected)
     }
@@ -34,6 +34,7 @@ const AgentHome = (props) => {
 
         if (window.confirm(`Voulez-vraiment supprimer l'agent ${agentName} ?`)) {
             dispatch(deleteAgent(agentId))
+            dispatch(getAgentInfos())
             toast.success(`Agent ${agentName} supprimé avec succès`, { position: toast.POSITION.BOTTOM_RIGHT });
             window.location.href = "/admin/agents";
             // props.history.push ('/admin/dashboard')
@@ -43,11 +44,9 @@ const AgentHome = (props) => {
     }
 
     useEffect(() => {
+
         dispatch(getAgentInfos())
 
-        return () => {
-
-        }
     }, [dispatch])
 
     console.log("DETAILS :", agent)
