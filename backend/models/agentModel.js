@@ -6,7 +6,7 @@ const agentSchema = new mongoose.Schema ({
     birthday : {type : Date, required : true},
     nationality : {type : String, required : true},
     civilStatus : {type : String, required : true},
-    skills : {type : String, required : false},
+    skills : { type : Array, default : []},
     sex : {type : String, required : true},
     photo : {type : String, required : true},
 }, {
