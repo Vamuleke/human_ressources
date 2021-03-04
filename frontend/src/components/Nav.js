@@ -59,7 +59,7 @@ const Nav = (props) => {
 							<a href="#" className="dropdown-toggle" data-toggle="dropdown"><img src={userInfo.photo} className="img-circle" alt="Avatar"/> <span>{userInfo.name}</span> <i className="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul className="dropdown-menu">
 								<li>
-									<Link to="/admin/profile">
+									<Link to="/admin/users/profile">
 										<i className="lnr lnr-user"></i> <span>Mon Profil</span>
 									</Link>
 								</li>

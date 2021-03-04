@@ -3,7 +3,7 @@ import config from "./config.js"
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
 import userRoote from './routes/userRouter.js'
-import adminRoute from './routes/adminRouter.js'
+
 import mongoose from 'mongoose'
 import agentRouter from './routes/agentRouter.js';
 dotenv.config();
@@ -23,7 +23,6 @@ app.use(bodyParser.json({ limit: '50mb' }))
 //--end of body-parser
 
 app.use('/api/users',userRoote)
-app.use('/api/admin/profile/create',adminRoute)
 app.use('/api/agents',agentRouter)
 app.use((error, req, resp, next) => {
     resp.status(500).send({ message: error.message })

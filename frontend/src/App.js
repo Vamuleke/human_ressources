@@ -24,8 +24,8 @@ const App = () => {
                     <Route exact path="/admin/agents/create" component={AgentCreate} />
                     <Route path="/admin/agents/:id" component={AgentDetails} />
 
-                    <Route exact path="/admin/profile" component={ProfileHome} />
-                    <Route path="/admin/profile/create" component={ProfileCreate} />
+                    <Route exact path="/admin/users/profile" component={ProfileHome} />
+                    <Route path="/admin/users/profile/:id" component={ProfileCreate} />
                     
                 </Switch>
             </Router>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 const ProfileHome = () => {
@@ -16,6 +16,7 @@ const ProfileHome = () => {
             style={{ border: '2px solid white', borderRadius: '500px' }}
             width='150'
             height='150'
+            alt=""
           />
           <div className='h3'>{userInfo.name}</div>
           <div className='h4'>{userInfo.email}</div>
@@ -25,7 +26,7 @@ const ProfileHome = () => {
 
           {/* <button className="btn btn-primary btn-block">Modifier mon profil</button> */}
           <Link
-            to={`/admin/profile/create/${userInfo._id}`}
+            to={`/admin/users/profile/${userInfo._id}`}
             className='btn btn-primary btn-block'
           >
             Modifier mon profil

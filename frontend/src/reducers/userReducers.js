@@ -1,5 +1,5 @@
 
-import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL,PROFIL_SAVE_REQUEST,PROFIL_SAVE_SUCCESS,PROFIL_SAVE_FAIL, USER_SIGN_OUT } from '../constants/constantsUser'
+import { USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_SIGNIN_FAIL,PROFIL_SAVE_REQUEST,PROFIL_SAVE_SUCCESS,PROFIL_SAVE_FAIL, USER_SIGN_OUT, USERS_LIST_REQUEST, USERS_LIST_FAIL, USERS_LIST_SUCCESS } from '../constants/constantsUser'
 function userSigninReducer(state = {}, action) {
     switch (action.type) {
         case USER_SIGNIN_REQUEST:
@@ -18,15 +18,15 @@ function userSigninReducer(state = {}, action) {
     }
 }
 
-function userUpdateProfil(state={user: {}},action){
+function profileDetailsReducer(state={users: {}},action){
    
     switch (action.type) {
-        case PROFIL_SAVE_REQUEST:
+        case USERS_LIST_REQUEST:
         return {loading:true}
-        case PROFIL_SAVE_SUCCESS:
-        return {loading:false,success:true, user : action.payload};
+        case USERS_LIST_SUCCESS:
+        return {loading:false, users:action.payload};
          
-        case PROFIL_SAVE_FAIL:
+        case USERS_LIST_FAIL:
         return {loading:false,error:action.payload};
         
         default :
@@ -34,5 +34,15 @@ function userUpdateProfil(state={user: {}},action){
     
     }
 }
-
-export {userSigninReducer,userUpdateProfil}
+function userUpdateReducer(state = {}, action) {
+    switch (action.type) {
+      case PROFIL_SAVE_REQUEST:
+        return { loading: true };
+      case PROFIL_SAVE_SUCCESS:
+        return { loading: false, userInfo: action.payload };
+      case PROFIL_SAVE_FAIL:
+        return { loading: false, error: action.payload };
+      default: return state;
+    }
+  }
+export {userSigninReducer,userUpdateReducer,profileDetailsReducer}
