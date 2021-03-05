@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { createAgent, updateAgent } from "../../actions/agentActions";
+import { useDispatch } from "react-redux";
+import { updateAgent } from "../../actions/agentActions";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import moment from "moment";
