@@ -80,7 +80,7 @@ const AgentHome = (props) => {
                             </div>
                         </div>
                     </td>
-                    <AgentUpdateModal agent={{_id : ag._id, name : ag.name, email : ag.email, birthday : ag.birthday, nationality : ag.nationality, skills : ag.skills, civilStatus : ag.civilStatus, sex : ag.sex, photo : ag.photo}} />
+                    <AgentUpdateModal agent={{_id : ag._id, name : ag.name, email : ag.email, birthday : ag.birthday, nationality : ag.nationality, skills : ag.skills, civilStatus : ag.civilStatus, sex : ag.sex, photo : ag.photo, address : ag.address, serviceTaking : ag.serviceTaking, baseSalary : ag.baseSalary, fonction : ag.fonction, confidentiality : ag.confidentiality, socialClub : ag.socialClub, phone : ag.phone, peopleToCall : ag.peopleToCall, eligibilityDate : ag.eligibilityDate}} />
                 </tr>
             )
         })

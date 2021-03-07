@@ -16,7 +16,7 @@ export const data = {
             confidentiality : true,
             socialClub : "Kivu Entrepreneur",
             phone : "+243973569651",
-            peopleToCall : [{name : "George", phone : "+243853569652"}, {name : "Marie", phone : "+243813569652"}],
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
             eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
@@ -35,7 +35,7 @@ export const data = {
             confidentiality : true,
             socialClub : "Kivu Entrepreneur",
             phone : "+243973569651",
-            peopleToCall : [{name : "George", phone : "+243853569652"}, {name : "Marie", phone : "+243813569652"}],
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
             eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
@@ -54,7 +54,7 @@ export const data = {
             confidentiality : true,
             socialClub : "Kivu Entrepreneur",
             phone : "+243973569651",
-            peopleToCall : [{name : "George", phone : "+243853569652"}, {name : "Marie", phone : "+243813569652"}],
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
             eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
@@ -73,7 +73,7 @@ export const data = {
             confidentiality : true,
             socialClub : "Kivu Entrepreneur",
             phone : "+243973569651",
-            peopleToCall : [{name : "George", phone : "+243853569652"}, {name : "Marie", phone : "+243813569652"}],
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
             eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
@@ -92,7 +92,7 @@ export const data = {
             confidentiality : true,
             socialClub : "Kivu Entrepreneur",
             phone : "+243973569651",
-            peopleToCall : [{name : "George", phone : "+243853569652"}, {name : "Marie", phone : "+243813569652"}],
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
             eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
@@ -111,7 +111,7 @@ export const data = {
             confidentiality : true,
             socialClub : "Kivu Entrepreneur",
             phone : "+243973569651",
-            peopleToCall : [{name : "George", phone : "+243853569652"}, {name : "Marie", phone : "+243813569652"}],
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
             eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
@@ -131,7 +131,7 @@ export const data = {
             confidentiality : true,
             socialClub : "Kivu Entrepreneur",
             phone : "+243973569651",
-            peopleToCall : [{name : "George", phone : "+243853569652"}, {name : "Marie", phone : "+243813569652"}],
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
             eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
 

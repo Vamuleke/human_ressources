@@ -6,11 +6,13 @@ import expressAsyncHandler from 'express-async-handler'
 const agentRouter = express.Router ()
 
 // SEED
-agentRouter.get ('/seed', expressAsyncHandler ( async (request, response) => {
+agentRouter.get ('/seed', expressAsyncHandler (async (request, response) => {
     await Agent.deleteMany ({})
     const createdAgents = await Agent.insertMany (data.agents)
 
     response.send (createdAgents)
+
+    //response.send ("Deleted...")
 }))
 
 // RETOURNE TOUS LES AGENTS
