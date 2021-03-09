@@ -12,15 +12,15 @@ export const getAgentInfos = () => async (dispatch) => {
     }
 }
 
-export const createAgent = (name, email, birthday, sex, nationality, civilStatus, skills, photo) => async (dispatch) => {
+export const createAgent = (agentData) => async (dispatch) => {
     
     dispatch({
         type: AGENT_CREATE_REQUEST,
-        payload: { name, email, birthday, sex, nationality, civilStatus, skills, photo }
+        payload: agentData
     })
 
     try {
-        const { data } = await axios.post('/api/agents/', { name : name, email : email, birthday : birthday, sex : sex, nationality : nationality, civilStatus : civilStatus, skills : skills, photo : photo})
+        const { data } = await axios.post('/api/agents/', agentData)
 
         dispatch({ type: AGENT_CREATE_SUCCESS, payload: data })
 

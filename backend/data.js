@@ -8,7 +8,16 @@ export const data = {
             civilStatus : 'Célibataire',
             skills : [{"skill" : "PHP", "step" : 30}, {"skill" : "MySQL", "step" : 70}, {"skill" : "Java", "step" : 60}],
             sex : "M",
-            photo : "https://place-hold.it/300x300"
+            photo : "https://place-hold.it/300x300",
+            address : "RDC, Goma № 340",
+            serviceTaking : "2021-02-16T07:09:41.389+00:00",
+            baseSalary : 1200,
+            fonction : "Développeur",
+            confidentiality : true,
+            socialClub : "Kivu Entrepreneur",
+            phone : "+243973569651",
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
+            eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
             name : "Felix Chiz",
@@ -18,7 +27,16 @@ export const data = {
             skills : [{"skill" : "Python", "step" : 20}, {"skill" : "MongoDB", "step" : 80}, {"skill" : "Séduction", "step" : '45'}],
             civilStatus : 'Divorcé',
             sex : "M",
-            photo : "https://place-hold.it/300x300"
+            photo : "https://place-hold.it/300x300",
+            address : "RDC, Goma № 340",
+            serviceTaking : "2021-02-16T07:09:41.389+00:00",
+            baseSalary : 1200,
+            fonction : "Développeur",
+            confidentiality : true,
+            socialClub : "Kivu Entrepreneur",
+            phone : "+243973569651",
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
+            eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
             name : "Selena Gomez",
@@ -28,7 +46,16 @@ export const data = {
             skills : [{"skill" : "Web Design", "step" : 67}, {"skill" : "Rédaction", "step" : 84}, {"skill" : "Web Marketing", "step" : 10}],
             civilStatus : 'Marié',
             sex : "F",
-            photo : "https://place-hold.it/300x300"
+            photo : "https://place-hold.it/300x300",
+            address : "RDC, Goma № 340",
+            serviceTaking : "2021-02-16T07:09:41.389+00:00",
+            baseSalary : 1200,
+            fonction : "Développeur",
+            confidentiality : true,
+            socialClub : "Kivu Entrepreneur",
+            phone : "+243973569651",
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
+            eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
             name : "Ariana Grande",
@@ -38,7 +65,16 @@ export const data = {
             skills : [{"skill" : "Danse", "step" : 77}, {"skill" : "Musique", "step" : 97}, {"skill" : "Chant", "step" : 68}],
             civilStatus : 'Marié',
             sex : "F",
-            photo : "https://place-hold.it/300x300"
+            photo : "https://place-hold.it/300x300",
+            address : "RDC, Goma № 340",
+            serviceTaking : "2021-02-16T07:09:41.389+00:00",
+            baseSalary : 1200,
+            fonction : "Développeur",
+            confidentiality : true,
+            socialClub : "Kivu Entrepreneur",
+            phone : "+243973569651",
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
+            eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
             name : "Erza Muqoli",
@@ -48,7 +84,16 @@ export const data = {
             skills : [{"skill" : "Musique", "step" : 87}, {"skill" : "Chant", "step" : 89}],
             civilStatus : 'Célibataire',
             sex : "F",
-            photo : "https://place-hold.it/300x300"
+            photo : "https://place-hold.it/300x300",
+            address : "RDC, Goma № 340",
+            serviceTaking : "2021-02-16T07:09:41.389+00:00",
+            baseSalary : 1200,
+            fonction : "Développeur",
+            confidentiality : true,
+            socialClub : "Kivu Entrepreneur",
+            phone : "+243973569651",
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
+            eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
             name : "Angélina Nava",
@@ -58,7 +103,16 @@ export const data = {
             skills : [{"skill" : "Danse", "step" : 83}, {"skill" : "Musique", "step" : 91}, {"skill" : "Littérature", "step" : 56}],
             civilStatus : 'Célibataire',
             sex : "F",
-            photo : "https://place-hold.it/300x300"
+            photo : "https://place-hold.it/300x300",
+            address : "RDC, Goma № 340",
+            serviceTaking : "2021-02-16T07:09:41.389+00:00",
+            baseSalary : 1200,
+            fonction : "Développeur",
+            confidentiality : true,
+            socialClub : "Kivu Entrepreneur",
+            phone : "+243973569651",
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
+            eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
         {
             name : "Will Smith",
@@ -69,7 +123,16 @@ export const data = {
             skills : [{"skill" : "Acteur", "step" : 94}, {"skill" : "Compositeur", "step" : 83}],
             civilStatus : 'Célibataire',
             sex : "F",
-            photo : "https://place-hold.it/300x300"
+            photo : "https://place-hold.it/300x300",
+            address : "RDC, Goma № 340",
+            serviceTaking : "2021-02-16T07:09:41.389+00:00",
+            baseSalary : 1200,
+            fonction : "Développeur",
+            confidentiality : true,
+            socialClub : "Kivu Entrepreneur",
+            phone : "+243973569651",
+            peopleToCall : [{nameCall : "George", phoneCall : "+243853569652"}, {nameCall : "Marie", phoneCall : "+243813569652"}],
+            eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
 
     ]
