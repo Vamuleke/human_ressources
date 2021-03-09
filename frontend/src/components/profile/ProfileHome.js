@@ -7,13 +7,12 @@ const ProfileHome = () => {
   return (
     <div className='main'>
       <div className='main-content'>
-        <div className='col-md-3 bg-dark'></div>
+        <div className='col-md-3'></div>
 
         <div className='text-center col-md-6' style={{ marginTop: '30px' }}>
           <img
             src={userInfo.photo}
-            className='rounded'
-            style={{ border: '2px solid white', borderRadius: '500px' }}
+            className='rounded-circle'
             width='150'
             height='150'
             alt=""
