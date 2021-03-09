@@ -1,37 +1,65 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { UpdateProfil } from '../../actions/userActions.js'
+import { detailsUsers, listUser, signin, update, UpdateProfil } from '../../actions/userActions.js'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Toggle from 'react-toggle'
 import 'react-toggle/style.css'
-const ProfileCreate = () => {
+import { Link } from 'react-router-dom'
+const ProfileCreate = (props) => {
   const userSignin = useSelector(state => state.userSignin)
   const { userInfo } = userSignin
-  const [id, setId] = useState(userInfo._id)
-  const [email, setEmail] = useState(userInfo.email)
-  const [name, setName] = useState(userInfo.name)
+  const [id, setId] = useState('')
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
   const [changePassword, setChangePassword] = useState(false)
-  const [password, setPassword] = useState(userInfo.password)
+  const [password, setPassword] = useState('')
   const [newpassword, setNewPassword] = useState('')
   const [password_confirmation, setPassword_confirmation] = useState('')
-  const [errorM, setError] = useState(userInfo.photo)
-  const [photo, setPhoto] = useState(userInfo.photo)
+  const [errorM, setError] = useState('')
+  const [photo, setPhoto] = useState('')
   const dispatch = useDispatch()
+  const userDetail = useSelector(state => state.userDetail)
   const updateProfil = useSelector(state => state.updateProfil)
-  const { error, loading, success } = updateProfil
+  const { error, loading: sucessLoading, success: sucessSave } = updateProfil
 
   const submitHandler = e => {
     e.preventDefault()
-    dispatch(UpdateProfil({ _id: id, name, email, photo }))
-    if (error) {
-      toast.error(errorM, { position: toast.POSITION.TOP_RIGHT })
-    } else {
-      toast.success('Profil modifier avec success !', {
+    if (password !== password_confirmation) {
+      alert('Entrer un mot de passe valide  !', {
         position: toast.POSITION.TOP_RIGHT
       })
+    } else {
+     
+      dispatch(
+        update({ userId: userInfo._id, name, email, password,photo })
+         )
+      
+      if (errorM) {
+        toast.error(errorM, { position: toast.POSITION.TOP_RIGHT })
+      } else {
+        toast.success('Profil modifier avec success !', {
+          position: toast.POSITION.TOP_RIGHT
+          
+        })
+       
+      }
+     
     }
+  
   }
+  useEffect(() => {
+    if (userInfo) {
+      console.log(userInfo.email)
+      setEmail(userInfo.email);
+      setName(userInfo.name);
+      setPassword(userInfo.password);
+      setPhoto(userInfo.photo);
+    } 
+
+   
+   
+  }, [userInfo,dispatch])
  
   const imageHandler = e => {
     e.preventDefault()
@@ -44,12 +72,11 @@ const ProfileCreate = () => {
       }
       reader.readAsDataURL(selected)
     } else {
-
-      alert ('Format de la photo non valide.')
+      alert('Format de la photo non valide.')
       // toast.error("Format de la photo non valide", {
       // position: toast.POSITION.TOP_RIGHT
       // })
-  }
+    }
   }
   return (
     <>
@@ -84,12 +111,12 @@ const ProfileCreate = () => {
                     />
                   </div>
                   <div className='form-group'>
-                    <label htmlFor='email'>Mot de passe</label>
+                    <label htmlFor='mot de passe'>Mot de passe</label>
                     <input
-                      value = {password}
-                      onChange={e => setPassword(e.target.value)}
-                      type='text'
-                      id='email'
+                      value={password_confirmation}
+                      onChange={e => setPassword_confirmation(e.target.value)}
+                      type='password'
+                      id='password_confirmation'
                       className='form-control'
                     />
                   </div>
@@ -106,14 +133,14 @@ const ProfileCreate = () => {
                   <div className='col-sm-6'>
                     <div className='form-group'>
                       <label htmlFor='changePassword'>
-                       Voulez vous changer le mot de passe ?
+                        Voulez vous changer le mot de passe ?
                       </label>
                       <br />
                       <Toggle
                         name='changePassword'
                         id='changePassword'
-                        defaultChecked = {changePassword}
-                        onChange={(e)=>setChangePassword(e.target.checked)}
+                        defaultChecked={changePassword}
+                        onChange={e => setChangePassword(e.target.checked)}
                       />
                     </div>
                   </div>
@@ -126,15 +153,13 @@ const ProfileCreate = () => {
                             type='password'
                             className='form-control'
                             name='password'
-                            value={password}
-                            onChange={e=>setPassword(e.target.value)}
+                            value={newpassword}
+                            onChange={e => setNewPassword(e.target.value)}
                             placeholder='Nouveau mot de passe'
                           />
                         </div>
                       </div>
-                      <div className='col-sm-6'>
-                      
-                      </div>
+                      <div className='col-sm-6'></div>
                     </React.Fragment>
                   ) : null}
 
@@ -153,7 +178,8 @@ const ProfileCreate = () => {
                   style={{ marginTop: '30px' }}
                 >
                   <img
-                    src={photo} alt=""
+                    src={photo}
+                    alt=''
                     className='rounded'
                     style={{ border: '2px solid white', borderRadius: '500px' }}
                     width='250'

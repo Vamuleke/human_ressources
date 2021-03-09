@@ -1,25 +1,41 @@
-import {createStore,combineReducers, applyMiddleware,compose} from 'redux';
-import Cookie from "js-cookie";
-import thunk from 'redux-thunk';
-import { userSigninReducer, userUpdateProfil } from './reducers/userReducers';
-import { createAgentReducer, deleteAgentReducer, getAgentInfosReducer, getAgentSingleDetailsReducer } from './reducers/agentRecucers';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
+
+import thunk from 'redux-thunk'
+import {
+  profileDetailsReducer,
+  userRegisterReducer,
+  userSigninReducer,
+  userUpdateReducer
+} from './reducers/userReducers'
+import {
+  createAgentReducer,
+  getAgentInfosReducer,
+  getAgentSingleDetailsReducer
+} from './reducers/agentRecucers'
 
 // const userInfo = Cookie.getJSON("userInfo") || null;
 const initialState = {
-    userSignin:{
-        userInfo:localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")):null
-    }
-};
+  userSignin: {
+    userInfo: localStorage.getItem('userInfo')
+      ? JSON.parse(localStorage.getItem('userInfo'))
+      : null
+  }
+}
 
 const reducer = combineReducers({
-    userSignin : userSigninReducer,
-    updateProfil : userUpdateProfil,
-    agentInfos : getAgentInfosReducer,
-    agentCreate : createAgentReducer,
-    agentSingleDetails : getAgentSingleDetailsReducer,
+  userSignin: userSigninReducer,
+  updateProfil: userUpdateReducer,
+  agentInfos: getAgentInfosReducer,
+  userDetail: profileDetailsReducer,
+  userRegister: userRegisterReducer,
+  agentCreate: createAgentReducer,
+  agentSingleDetails: getAgentSingleDetailsReducer
 })
 
-const composeEnHancer=window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store=createStore(reducer,initialState,composeEnHancer(applyMiddleware(thunk)));
-export default store;
-
+const composeEnHancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const store = createStore(
+  reducer,
+  initialState,
+  composeEnHancer(applyMiddleware(thunk))
+)
+export default store

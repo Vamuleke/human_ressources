@@ -2,8 +2,12 @@ import express from "express";
 import User from "../models/userModel.js";
 import { getToken, isAdmin, isAuth } from "../util.js";
 import expressAsyncHandler from 'express-async-handler'
-const rooter = express.Router();
-rooter.post('/signin',expressAsyncHandler(async (req,resp)=>{
+const router = express.Router();
+router.get("/profile", async (req,resp)=>{
+  const users= await User.find({});
+  resp.send(users)
+  })
+  router.post('/signin',expressAsyncHandler(async (req,resp)=>{
   const signinUser = await User.findOne({
     email : req.body.email,
     password : req.body.password
@@ -22,11 +26,19 @@ resp.send({
           resp.status(401).send({message:"nom d'utilisateur ou mot de passe incorrect"})
   }
 }))
-rooter.post('/register',async (req,resp)=>{
+router.post('/register',expressAsyncHandler(async (req,resp)=>{
+  const userExist = await User.findOne({ email: req.body.email });
+
+  if (userExist) {
+    resp.status(401).send({message:"Email existe deja Veuillez vous connecter ou entrer un autres adresse Email"});
+  }else{
   const user=new User({
     name:req.body.name,
     email:req.body.email,
-    password:req.body.password
+    password:req.body.password,
+    photo:req.body.photo,
+    isAdmin:req.body.isAdmin
+  
   });
 const newUser = await user.save();
   if(newUser){
@@ -42,8 +54,44 @@ resp.send({
   }else{
           resp.status(401).send({message:"invalid user data"})
   }
-})
+}})
+)
 //
 
 
-export default rooter
+router.put('/profile/:id', isAuth, async (req, res) => {
+  const userId = req.params.id;
+  const user = await User.findById(userId);
+  if (user) {
+    user.name = req.body.name || user.name;
+    user.email = req.body.email || user.email;
+    user.password = req.body.password || user.password;
+    user.photo = req.body.photo || user.photo;
+    const updatedUser = await user.save();
+    res.send({
+      _id: updatedUser.id,
+      name: updatedUser.name,
+      email: updatedUser.email,
+      password: updatedUser.password,
+      photo: updatedUser.photo,
+      isAdmin: updatedUser.isAdmin,
+      token: getToken(updatedUser),
+    });
+  } else {
+    res.status(404).send({ message: "l'utilisateur n'existe pas !" });
+  }
+});
+
+
+router.get('/profile/:id',expressAsyncHandler(async (req, resp) => {
+  const user = await User.findOne({ _id: req.params.id })
+  if (user) {
+    resp.send(user)
+  } else {
+    resp.status(404).send({ message: 'Erreur ' })
+  }
+})
+)
+
+
+export default router
