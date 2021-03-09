@@ -3,7 +3,7 @@ import User from "../models/userModel.js";
 import { getToken, isAdmin, isAuth } from "../util.js";
 import expressAsyncHandler from 'express-async-handler'
 const router = express.Router();
-router.get("/", async (req,resp)=>{
+router.get("/profile", async (req,resp)=>{
   const users= await User.find({});
   resp.send(users)
   })
@@ -26,11 +26,19 @@ resp.send({
           resp.status(401).send({message:"nom d'utilisateur ou mot de passe incorrect"})
   }
 }))
-router.post('/register',async (req,resp)=>{
+router.post('/register',expressAsyncHandler(async (req,resp)=>{
+  const userExist = await User.findOne({ email: req.body.email });
+
+  if (userExist) {
+    resp.status(401).send({message:"Email existe deja Veuillez vous connecter ou entrer un autres adresse Email"});
+  }else{
   const user=new User({
     name:req.body.name,
     email:req.body.email,
-    password:req.body.password
+    password:req.body.password,
+    photo:req.body.photo,
+    isAdmin:req.body.isAdmin
+  
   });
 const newUser = await user.save();
   if(newUser){
@@ -46,7 +54,8 @@ resp.send({
   }else{
           resp.status(401).send({message:"invalid user data"})
   }
-})
+}})
+)
 //
 
 

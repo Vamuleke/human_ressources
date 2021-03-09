@@ -26,7 +26,7 @@ const ProfileCreate = (props) => {
   const submitHandler = e => {
     e.preventDefault()
     if (password !== password_confirmation) {
-      toast.error('Entrer un mot de passe valide  !', {
+      alert('Entrer un mot de passe valide  !', {
         position: toast.POSITION.TOP_RIGHT
       })
     } else {
@@ -35,7 +35,7 @@ const ProfileCreate = (props) => {
         update({ userId: userInfo._id, name, email, password,photo })
          )
       
-      if (error) {
+      if (errorM) {
         toast.error(errorM, { position: toast.POSITION.TOP_RIGHT })
       } else {
         toast.success('Profil modifier avec success !', {
@@ -56,7 +56,7 @@ const ProfileCreate = (props) => {
       setPassword(userInfo.password);
       setPhoto(userInfo.photo);
     } 
-    // dispatch(detailsUsers(props.match.params.id))
+
    
    
   }, [userInfo,dispatch])

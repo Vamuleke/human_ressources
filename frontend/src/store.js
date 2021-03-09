@@ -3,6 +3,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import {
   profileDetailsReducer,
+  userRegisterReducer,
   userSigninReducer,
   userUpdateReducer
 } from './reducers/userReducers'
@@ -26,6 +27,7 @@ const reducer = combineReducers({
   updateProfil: userUpdateReducer,
   agentInfos: getAgentInfosReducer,
   userDetail: profileDetailsReducer,
+  userRegister: userRegisterReducer,
   agentCreate: createAgentReducer,
   agentSingleDetails: getAgentSingleDetailsReducer
 })

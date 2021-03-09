@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Register from './Register'
 
 const SideBar = () => {
     return (
@@ -19,6 +20,7 @@ const SideBar = () => {
                                 <span>Agents</span>
                             </Link>
                         </li>
+                     
                         <li><a href="#" className=""><i className="lnr lnr-users"></i> <span>Membres</span></a></li>
                         <li>
                             <a href="#subPages" data-toggle="collapse" className="collapsed"><i className="lnr lnr-cog"></i> <span>Actions</span> <i className="icon-submenu lnr lnr-chevron-left"></i></a>
