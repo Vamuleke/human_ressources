@@ -26,8 +26,8 @@ const App = () => {
             </>
           )}
         />
-        <Route component={PageNotFound} />
         <Switch>
+
           <Route path="/admin/dashboard" component={Dashboard} />
           <Route exact path="/" component={Login} />
 
@@ -40,6 +40,8 @@ const App = () => {
           <Route path="/admin/users/profile/:id" component={ProfileCreate} />
 
           <Route exact path="/admin/projects" component={ProjectHome} />
+          
+          <Route component={PageNotFound} />
         </Switch>
       </Router>
     </div>
