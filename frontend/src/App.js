@@ -20,9 +20,9 @@ const App = () => {
                 <Switch>
                     <Route path="/admin/dashboard" component={Dashboard} />
                     <Route exact path="/" component={Login} />
-                    <Route exact path="/admin/users/register" component={Register} />
+                    <Route path="/admin/users/register" component={Register} />
                     <Route exact path="/admin/agents" component={AgentHome} />
-                    <Route exact path="/admin/agents/create" component={AgentCreate} />
+                    <Route path="/admin/agents/create" component={AgentCreate} />
                     <Route path="/admin/agents/:id" component={AgentDetails} />
                     <Route exact path="/admin/users/profile" component={ProfileHome} />
                     <Route path="/admin/users/profile/:id" component={ProfileCreate} />

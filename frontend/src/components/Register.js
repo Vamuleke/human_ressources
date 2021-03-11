@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser } from '../actions/userActions'
 import MessageBox from './MessageBox'
-import avatar from '../image/users.png'
+//import avatar from '../image/users.png'
 
 const Register = (props) => {
  
@@ -11,7 +11,7 @@ const Register = (props) => {
   const [password, setPassword] = useState('')
   const [isAdmin, setIsAdmin] = useState(false)
   const [errorM, setError] = useState('')
-  const [photo, setPhoto] = useState(avatar)
+  const [photo, setPhoto] = useState(process.env.PUBLIC_URL + "/assets/images/user-default.png")
 
   const imageHandler = e => {
     e.preventDefault()

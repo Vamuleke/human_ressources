@@ -23,9 +23,17 @@ const SideBar = () => {
 
             <li>
               <a href="#chat" alt="">
-              <i className="lnr lnr-bubble"></i> <span>Chat</span>
+                <i className="lnr lnr-bubble"></i> <span>Chat</span>
               </a>
             </li>
+
+            <li>
+              <Link to="/admin/agents">
+                <i className="lnr lnr-layers"></i>
+                <span>Projets</span>
+              </Link>
+            </li>
+
             <li>
               <a href="#subPages" data-toggle="collapse" className="collapsed">
                 <i className="lnr lnr-cog"></i> <span>Actions</span>{" "}
