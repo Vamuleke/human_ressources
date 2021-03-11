@@ -14,8 +14,8 @@ const ProjectHome = () => {
                 </div>
 
                 <div className="col-md-6 text-right mt-1">
-                  <Link className="btn btn-primary" to="#newProject">
-                    <i className="fa fa-plus"></i> &nbsp;Créer nouveau projet
+                  <Link className="btn btn-primary" to="/admin/projects/create">
+                    <i className="fa fa-plus"></i> &nbsp;Créer un nouveau projet
                   </Link>
                 </div>
               </div>

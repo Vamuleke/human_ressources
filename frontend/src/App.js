@@ -13,6 +13,7 @@ import AgentDetails from "./components/agents/AgentDetails";
 import Register from "./components/Register";
 import ProjectHome from "./components/projects/ProjectHome";
 import PageNotFound from "./components/PageNotFound";
+import ProjectCreate from "./components/projects/ProjectCreate";
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="/admin/users/profile/:id" component={ProfileCreate} />
 
           <Route exact path="/admin/projects" component={ProjectHome} />
+          <Route path="/admin/projects/create" component={ProjectCreate} />
           
           <Route component={PageNotFound} />
         </Switch>
