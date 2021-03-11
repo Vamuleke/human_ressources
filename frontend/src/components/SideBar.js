@@ -28,7 +28,7 @@ const SideBar = () => {
             </li>
 
             <li>
-              <Link to="/admin/agents">
+              <Link to="/admin/projects">
                 <i className="lnr lnr-layers"></i>
                 <span>Projets</span>
               </Link>
