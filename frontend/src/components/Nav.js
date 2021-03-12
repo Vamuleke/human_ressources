@@ -15,7 +15,6 @@ const Nav = props => {
 
   return (
     <nav className='navbar navbar-default navbar-fixed-top'>
-      {console.log(userSignin)}
       <div className='brand'>
         <Link to='/admin/dashboard'>
           <img

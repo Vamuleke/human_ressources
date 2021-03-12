@@ -135,5 +135,34 @@ export const data = {
             eligibilityDate : "2021-02-16T07:09:41.389+00:00"
         },
 
+    ],
+    projects : [
+        {
+            "projectName" : "Humanity Help",
+            "projectDeadline" : "2021-03-23",
+            "projectResponsible" : "60464dbd95e28536840c4185",
+            "tasks" : [
+                {"taskName" : "Task 1", "taskDeadline" : "2021-04-12", "taskStatus" : false},
+                {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
+            ]
+         },
+        {
+            "projectName" : "Health to all",
+            "projectDeadline" : "2021-03-23",
+            "projectResponsible" : "60464dbd95e28536840c4187",
+            "tasks" : [
+                {"taskName" : "Task 1", "taskDeadline" : "2021-04-12", "taskStatus" : false},
+                {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
+            ]
+         },
+        {
+            "projectName" : "School Management App",
+            "projectDeadline" : "2021-03-23",
+            "projectResponsible" : "60464dbd95e28536840c4186",
+            "tasks" : [
+                {"taskName" : "Task 1", "taskDeadline" : "2021-04-12", "taskStatus" : false},
+                {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
+            ]
+         },
     ]
 }

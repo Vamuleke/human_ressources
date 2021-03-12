@@ -6,6 +6,7 @@ import userRoote from './routes/userRouter.js'
 
 import mongoose from 'mongoose'
 import agentRouter from './routes/agentRouter.js';
+import projectRouter from './routes/projectRouter.js';
 dotenv.config();
 
 const mongodbUrl = config.MONGODB_URL
@@ -24,6 +25,7 @@ app.use(bodyParser.json({ limit: '50mb' }))
 
 app.use('/api/users',userRoote)
 app.use('/api/agents',agentRouter)
+app.use('/api/projects', projectRouter)
 app.use((error, req, resp, next) => {
     resp.status(500).send({ message: error.message })
 })

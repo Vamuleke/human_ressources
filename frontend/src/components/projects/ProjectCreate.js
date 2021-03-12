@@ -2,11 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getAgentInfos } from "../../actions/agentActions";
+import { createProject, getProjectInfos } from "../../actions/projectActions";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProjectCreate = () => {
   const [tasks, setTasks] = useState([
     { taskName: "", taskDeadline: "", taskStatus: false },
   ]);
+  const [projectName, setProjectName] = useState("");
+  const [projectDeadline, setProjectDeadline] = useState("");
+  const [projectResponsible, setProjectResponsible] = useState("");
 
   // AJOUT/SUPPRESSION D'UN TASK - DYNAMIC FORM FIELDS
   const addTaskRow = () => {
@@ -29,16 +35,66 @@ const ProjectCreate = () => {
     setTasks(values);
   };
 
+  // SUBMIT HANDLER
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    // VALIDATTION
+    if (
+      !projectName ||
+      !projectDeadline ||
+      !projectResponsible ||
+      projectResponsible === ""
+    ) {
+      alert("Veuillez remplir tous les champs !");
+      return false;
+    }
+
+    for (let i = 0; i < tasks.length; i++) {
+      if (tasks[i].taskName === "" || tasks[i].taskDeadline === "") {
+        alert(
+          'Veuillez renseigner toutes les valeurs du champ "Tâche + Deadline"'
+        );
+        return false;
+      }
+    }
+
+    // SI TOUT DE PASSE BIEN, ON DISPATCH L'ACTION POUR CREER LE PROJET
+
+    const project = {
+      projectName: projectName,
+      projectDeadline: projectDeadline,
+      projectResponsible: projectResponsible,
+      tasks: tasks,
+    };
+
+    dispatch(createProject(project));
+    clearFields();
+    toast.success("Projet crée avec succès", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
+  };
+
+  // FONCTION POUR VIDER LES CHAMPS
+  const clearFields = () => {
+    setProjectName("");
+    setProjectDeadline("");
+    setProjectResponsible("");
+    setTasks([{ taskName: "", taskDeadline: "", taskStatus: false }]);
+  };
+
   // USESTATE & DISPATCH & USEEFFECT
-  const dispatch = useDispatch ()
-  const agentInfos = useSelector (state => state.agentInfos)
-  const {loading, error, agent} = agentInfos
+  const dispatch = useDispatch();
+  const agentInfos = useSelector((state) => state.agentInfos);
+  const { loading, agent } = agentInfos;
 
-  useEffect (() => {
-    dispatch (getAgentInfos ())
-  }, [])
+  const projectInfos = useSelector((state) => state.projectInfos);
+  const { project } = projectInfos;
 
-  console.log("AGENT INFOS !!!", agent);
+  useEffect(() => {
+    dispatch(getAgentInfos());
+    dispatch(getProjectInfos());
+  }, [dispatch]);
 
   return (
     <div className="main">
@@ -61,36 +117,47 @@ const ProjectCreate = () => {
               </div>
             </div>
             <div className="card-body">
-              <form>
+              <form onSubmit={submitHandler}>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
-                      <label htmlFor="name">Nom du projet</label>
-                      <input type="text" id="name" className="form-control" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="deadline">Date d'échéance</label>
+                      <label htmlFor="projectName">Nom du projet</label>
                       <input
-                        type="date"
-                        id="deadline"
+                        type="text"
+                        id="projectName"
                         className="form-control"
+                        value={projectName}
+                        onChange={(e) => setProjectName(e.target.value)}
                       />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="responsible">Responsable</label>
+                      <label htmlFor="projectDeadline">Date d'échéance</label>
+                      <input
+                        type="date"
+                        id="projectDeadline"
+                        className="form-control"
+                        value={projectDeadline}
+                        onChange={(e) => setProjectDeadline(e.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="projectResponsible">Responsable</label>
                       <select
                         type="date"
-                        id="responsible"
+                        id="projectDeadline"
                         className="form-control"
+                        value={projectResponsible}
+                        onChange={(e) => setProjectResponsible(e.target.value)}
                       >
-                        <option>Sélectionner...</option>
-                        {
-                          !loading && agent.map (ag => {
+                        <option value="">Sélectionner...</option>
+                        {!loading &&
+                          agent.map((ag) => {
                             return (
-                              <option value={ag._id} key={ag._id}>{ag.name}</option>
-                            )
-                          })
-                        }
+                              <option value={ag._id} key={ag._id}>
+                                {ag.name}
+                              </option>
+                            );
+                          })}
                       </select>
                     </div>
                   </div>
