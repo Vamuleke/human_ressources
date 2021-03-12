@@ -26,4 +26,14 @@ projectRouter.post ('/', expressAsyncHandler (async (req, res) => {
     res.status (201).send (createdProject)
 }))
 
+// projectRouter.get ('/:status', expressAsyncHandler (async (req, res) => {
+//     const project = await Project.find ({status : req.params.status}).populate ('projectResponsible')
+
+//     if (project.length > 0) {
+//         res.status (200).send (project)
+//     } else {
+//         res.status (404).send ({message : "Aucun project n'a ce statut."})
+//     }
+// }))
+
 export default projectRouter

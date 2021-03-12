@@ -32,7 +32,7 @@ const reducer = combineReducers({
   agentCreate: createAgentReducer,
   agentSingleDetails: getAgentSingleDetailsReducer,
   projectInfos : getProjectInfosReducer,
-  createProject : createProjectReducer
+  createProject : createProjectReducer,
 })
 
 const composeEnHancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

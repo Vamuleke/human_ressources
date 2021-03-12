@@ -1,4 +1,4 @@
-import {PROJECT_INFOS_REQUEST, PROJECT_INFOS_SUCCESS, PROJECT_INFOS_FAIL, PROJECT_CREATE_REQUEST, PROJECT_CREATE_FAIL, PROJECT_CREATE_SUCCESS} from '../constants/constantsProject'
+import {PROJECT_INFOS_REQUEST, PROJECT_INFOS_SUCCESS, PROJECT_INFOS_FAIL, PROJECT_CREATE_REQUEST, PROJECT_CREATE_FAIL, PROJECT_CREATE_SUCCESS, PROJECT_INFOS_BY_STATUS_REQUEST, PROJECT_INFOS_BY_STATUS_SUCCESS, PROJECT_INFOS_BY_STATUS_FAIL} from '../constants/constantsProject'
 
 export const getProjectInfosReducer = (state = {project : [], loading : true}, action) => {
     switch (action.type) {
@@ -25,3 +25,16 @@ export const createProjectReducer = (state = {project : [], loading : true}, act
             return false
     }
 }
+
+// export const getProjectInfosByStatusReducer = (state = {project : [], loading : true}, action) => {
+//     switch (action.type) {
+//         case PROJECT_INFOS_BY_STATUS_REQUEST :
+//             return {loading : true}
+//         case PROJECT_INFOS_BY_STATUS_SUCCESS :
+//             return {loading : false, project : action.payload}
+//         case PROJECT_INFOS_BY_STATUS_FAIL :
+//             return {loading : false, error : action.payload}
+//         default :
+//             return state
+//     }
+// }

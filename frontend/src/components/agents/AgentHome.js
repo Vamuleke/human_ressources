@@ -136,9 +136,7 @@ const AgentHome = (props) => {
       toast.success(`Agent ${agentName} supprimé avec succès`, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
-      //window.location.href = "/admin/agents";
-      // props.history.push ('/admin/dashboard')
-      // props.history.push ('/admin/agents')
+    
     }
   };
 
