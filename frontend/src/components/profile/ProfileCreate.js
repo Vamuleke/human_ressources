@@ -12,6 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import { Link } from "react-router-dom";
+import LoadingBox from "../LoadingBox.js";
+import MessageBox from "../MessageBox.js";
 const ProfileCreate = (props) => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
@@ -22,13 +24,15 @@ const ProfileCreate = (props) => {
   const [password, setPassword] = useState("");
   const [newpassword, setNewPassword] = useState("");
   const [password_confirmation, setPassword_confirmation] = useState("");
-  const [errorM, setError] = useState("");
   const [photo, setPhoto] = useState("");
   const dispatch = useDispatch();
-  const userDetail = useSelector((state) => state.userDetail);
   const updateProfil = useSelector((state) => state.updateProfil);
-  const { error, loading: sucessLoading, success: sucessSave } = updateProfil;
-
+  const { error, loading: sucessLoading, success: successSave } = updateProfil;
+useEffect(()=>{
+  if(successSave){
+    
+  }
+},[successSave])
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== password_confirmation) {
@@ -36,11 +40,11 @@ const ProfileCreate = (props) => {
         position: toast.POSITION.TOP_RIGHT,
       });
     } else {
-      dispatch(update({ userId: userInfo._id, name, email, password, photo }));
 
-      if (errorM) {
-        toast.error(errorM, { position: toast.POSITION.TOP_RIGHT });
+      if (error) {
+        toast.error(error, { position: toast.POSITION.TOP_RIGHT });
       } else {
+        dispatch(update({ userId: userInfo._id, name, email, newpassword, photo }));
         toast.success("Profil modifier avec success !", {
           position: toast.POSITION.TOP_RIGHT,
         });
@@ -49,7 +53,7 @@ const ProfileCreate = (props) => {
   };
   useEffect(() => {
     if (userInfo) {
-      console.log(userInfo.email);
+      
       setEmail(userInfo.email);
       setName(userInfo.name);
       setPassword(userInfo.password);
@@ -80,7 +84,7 @@ const ProfileCreate = (props) => {
         <div className="main-content">
           <div className="container-fluid">
             <div className="card mt-4">
-              <div className="card-header">
+              <div className="card-header text-center">
                 {/* <span className="font-weight-light h3">
                   Mettre à jour mon profil
                 </span> */}
@@ -92,7 +96,8 @@ const ProfileCreate = (props) => {
                   </div>
                 </div>
               </div>
-
+              {sucessLoading && <LoadingBox></LoadingBox> }
+              {error && <MessageBox type='danger'>{error}</MessageBox>}
               <div className="card-body">
                 <div className="col-md-6">
                   <form onSubmit={submitHandler}>
@@ -188,6 +193,7 @@ const ProfileCreate = (props) => {
                   />
                 </div>
               </div>
+             
             </div>
           </div>
         </div>

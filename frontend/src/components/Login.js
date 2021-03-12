@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {signin} from '../actions/userActions'
 import {toast} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"
+import LoadingBox from './LoadingBox'
 toast.configure()
 const Login = (props) => {
 
@@ -29,8 +30,6 @@ const submitHandler=(e)=>{
     dispatch(signin(email,password))
     if(error){
         toast.error(error,{position:toast.POSITION.TOP_RIGHT})
-}else{
-    
 }
 }
 
@@ -42,10 +41,9 @@ const submitHandler=(e)=>{
                     </div>
                     <div className="col-md-6">
                         <h1 className="text-center">Connexion</h1>
-                         <div>
-                        
-            {/* {loading && <LoadingBox></LoadingBox>} */}
-            </div>
+                       
+            {loading ? <LoadingBox></LoadingBox> :(
+            
                         <form onSubmit={submitHandler}>
                             <div className="form-group">
                                 <div className="input-group">
@@ -62,7 +60,7 @@ const submitHandler=(e)=>{
                             </div>
 
                             <button className="btn btn-primary btn-block">Se connecter</button>
-                        </form>
+                        </form>)}
                     </div>
                     <div className="col-md-3">
                     </div>

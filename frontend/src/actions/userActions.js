@@ -17,6 +17,7 @@ import {
 
 const detailsUsers = userId => async dispatch => {
   try {
+    
     dispatch({ type: USERS_LIST_REQUEST, payload: userId })
     const { data } = await Axios.get('/api/users/profile/' + userId)
     dispatch({ type: USERS_LIST_SUCCESS, payload: data })
@@ -66,7 +67,8 @@ const listUsers = () => async dispatch => {
 
 
 
-const signin = (email, password) => async dispatch => {
+const signin = (email, password) => async (dispatch) => {
+  
   dispatch({ type: USER_SIGNIN_REQUEST, payload: { email, password } })
   try {
     const { data } = await Axios.post('/api/users/signin', { email, password })
@@ -85,7 +87,7 @@ const signin = (email, password) => async dispatch => {
   }
 }
 
-const update = ({ userId, name, email, password, photo }) => async (
+const update = ({ userId, name, email, newpassword, photo }) => async (
   dispatch,
   getState
 ) => {
@@ -94,12 +96,12 @@ const update = ({ userId, name, email, password, photo }) => async (
   } = getState()
   dispatch({
     type: PROFIL_SAVE_REQUEST,
-    payload: { userId, name, email, password, photo }
+    payload: { userId, name, email,newpassword, photo }
   })
   try {
     const { data } = await Axios.put(
       '/api/users/profile/' + userId,
-      { name, email, password, photo },
+      { name, email, newpassword, photo },
       {
         headers: {
           Authorization: 'Bearer ' + userInfo.token
@@ -124,4 +126,4 @@ const signout = () => dispatch => {
   dispatch({ type: USER_SIGN_OUT })
 }
 
-export { signin, signout, update, detailsUsers,registerUser }
+export { signin, signout, update, detailsUsers,registerUser,listUsers }

@@ -4,13 +4,11 @@ import { registerUser } from '../actions/userActions'
 import MessageBox from './MessageBox'
 import avatar from '../image/users.png'
 
-const Register = (props) => {
- 
+const Register = props => {
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [errorM, setError] = useState('')
+  const [isAdmin, setIsAdmin] = useState(true)
   const [photo, setPhoto] = useState(avatar)
 
   const imageHandler = e => {
@@ -30,99 +28,105 @@ const Register = (props) => {
       // })
     }
   }
-  const userRegister = useSelector(state => state.userRegister);
-  const { loading, userInfo, error } = userRegister;
+  const userRegister = useSelector(state => state.userRegister)
+  const { loading, userInfo, error } = userRegister
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   //submit
   const SubmitHandler = e => {
-    e.preventDefault();
-    dispatch(registerUser(name, email, password,photo,isAdmin));
-  
-  };
+    e.preventDefault()
+    dispatch(registerUser(name, email, password, photo, isAdmin))
+  }
 
   return (
     <>
       <div className='main'>
         <div className='main-content'>
-          <div className='container'>
-            <div className='card col-md-6'>
-              <div className='card-header h2 text-center'>
-                Créer un  compte
+          <div className='container-fluid'>
+            <div className='card mt-4'>
+              <div className='card-header text-center'>
+                {/* <span className="font-weight-light h3">
+                  Mettre à jour mon profil
+                </span> */}
+                <div className='row py-2'>
+                  <div className='col-md-12 mt-1'>
+                    <span className='font-weight-light h3 text-center'>
+                     Créer un compte
+                    </span>
+                  </div>
+                </div>
               </div>
+
               {error && <MessageBox type='danger'>{error}</MessageBox>}
               <div className='card-body'>
-                <form onSubmit={SubmitHandler}>
-                  <div className='form-group'>
-                    <label htmlFor='name'>Nom (s)</label>
-                    <input
-                      value={name}
-                      onChange={e => setName(e.target.value)}
-                      type='text'
-                      id='name'
-                      className='form-control'
-                    />
-                  </div>
+                <div className='col-md-6'>
+                  <form onSubmit={SubmitHandler}>
+                    <div className='form-group'>
+                      <label htmlFor='name'>Nom (s)</label>
+                      <input
+                        value={name}
+                        onChange={e => setName(e.target.value)}
+                        type='text'
+                        id='name'
+                        className='form-control'
+                      />
+                    </div>
 
-                  <div className='form-group'>
-                    <label htmlFor='email'>Adresse email</label>
-                    <input
-                      value={email}
-                      onChange={e => setEmail(e.target.value)}
-                      type='email'
-                      id='email'
-                      className='form-control'
-                    />
-                  </div>
-                  <div className='form-group'>
-                    <label htmlFor='password'>Mot de passe</label>
-                    <input
-                      value={password}
-                      onChange={e => setPassword(e.target.value)}
-                      type='password'
-                      id='password'
-                      className='form-control'
-                    />
-                  </div>
-                  <div className='form-group'>
-                    <label htmlFor='email'>Position</label>
-                   <input type="checkbox" value={isAdmin} defaultChecked={e=>setIsAdmin(e.target.checked)}/>
-                  </div>
-                 
+                    <div className='form-group'>
+                      <label htmlFor='email'>Adresse email</label>
+                      <input
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        type='email'
+                        id='email'
+                        className='form-control'
+                      />
+                    </div>
+                    <div className='form-group'>
+                      <label htmlFor='password'>Mot de passe</label>
+                      <input
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                        type='password'
+                        id='password'
+                        className='form-control'
+                      />
+                    </div>
+                    <div className='form-group'>
+                      
+                      <input
+                        type='checkbox'
+                        value={isAdmin}
+                        onChange={e => setIsAdmin(e.target.checked)}
+                        
+                      />{' '}
+                      <label htmlFor='email'>Admin</label>
+                    </div>
 
-                  <div className='form-group'>
-                    <label htmlFor='photo'>Photo</label>
-                    <input
-                      onChange={imageHandler}
-                      type='file'
-                      id='photo'
-                      className='form-control'
-                    />
-                  </div>
-                  <button type='submit' className='btn btn-primary btn-block'>
-                    Valider
-                  </button>
-                </form>
-              </div>
-            </div>
+                    <div className='form-group'>
+                      <label htmlFor='photo'>Photo</label>
+                      <input
+                        onChange={imageHandler}
+                        type='file'
+                        id='photo'
+                        className='form-control'
+                      />
+                    </div>
+                    <button type='submit' className='btn btn-primary btn-block'>
+                      Valider
+                    </button>
+                  </form>
+                </div>
 
-            <div className='col-md-6 text-right'>
-              <div className='card-body text-right'>
-                <div className='col-md-3'></div>
-                <div
-                  className='text-right col-md-6'
-                  style={{ marginTop: '30px' }}
-                >
+                <div className='col-md-6 text-center pt-5'>
                   <img
                     src={photo}
                     alt=''
-                    className='rounded'
-                    style={{ border: '2px solid white', borderRadius: '500px' }}
-                    width='250'
+                    className='rounded-circle mx-auto'
+                    width='300'
+                    height='300'
                   />
                 </div>
-
-                <div className='col-md-3'></div>
               </div>
             </div>
           </div>
