@@ -164,5 +164,65 @@ export const data = {
                 {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
             ]
          },
+        {
+            "projectName" : "Project One",
+            "projectDeadline" : "2021-03-14",
+            "projectResponsible" : "60464dbd95e28536840c4186",
+            "tasks" : [
+                {"taskName" : "Task 1", "taskDeadline" : "2021-04-12", "taskStatus" : false},
+                {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
+            ],
+            "status" : "inProgress"
+         },
+        {
+            "projectName" : "Project Two",
+            "projectDeadline" : "2021-07-23",
+            "projectResponsible" : "60464dbd95e28536840c4186",
+            "tasks" : [
+                {"taskName" : "Task 1", "taskDeadline" : "2021-04-12", "taskStatus" : false},
+                {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
+            ],
+            "status" : "inProgress"
+         },
+        {
+            "projectName" : "Project Three",
+            "projectDeadline" : "2021-08-15",
+            "projectResponsible" : "60464dbd95e28536840c4188",
+            "tasks" : [
+                {"taskName" : "Task 1", "taskDeadline" : "2021-04-12", "taskStatus" : false},
+                {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
+            ],
+            "status" : "inProgress"
+         },
+        {
+            "projectName" : "Project Four",
+            "projectDeadline" : "2020-10-15",
+            "projectResponsible" : "60464dbd95e28536840c4188",
+            "tasks" : [
+                {"taskName" : "Task 1", "taskDeadline" : "2021-04-12", "taskStatus" : false},
+                {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
+            ],
+            "status" : "finished"
+         },
+        {
+            "projectName" : "Project Five",
+            "projectDeadline" : "2020-10-15",
+            "projectResponsible" : "60464dbd95e28536840c4189",
+            "tasks" : [
+                {"taskName" : "Task 1", "taskDeadline" : "2021-04-12", "taskStatus" : false},
+                {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
+            ],
+            "status" : "finished"
+         },
+        {
+            "projectName" : "Project Six",
+            "projectDeadline" : "2020-10-15",
+            "projectResponsible" : "60464dbd95e28536840c4189",
+            "tasks" : [
+                {"taskName" : "Task 1", "taskDeadline" : "2021-04-12", "taskStatus" : false},
+                {"taskName" : "Task 2", "taskDeadline" : "2021-07-16", "taskStatus" : false}
+            ],
+            "status" : "delivered"
+         },
     ]
 }

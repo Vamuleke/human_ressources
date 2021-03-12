@@ -13,7 +13,7 @@ projectRouter.get ('/seed', expressAsyncHandler (async (req, res) => {
 }))
 
 projectRouter.get ('/', expressAsyncHandler ( async (req, res) => {
-    const projects = await Project.find ({})
+    const projects = await Project.find ({}).populate ('projectResponsible')
 
     res.status (200).send (projects)
 }))

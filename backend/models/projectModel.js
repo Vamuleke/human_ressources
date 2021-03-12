@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const projectSchema = mongoose.Schema(
+const projectSchema = new mongoose.Schema(
   {
     projectName: {
       type: String,
@@ -20,6 +20,10 @@ const projectSchema = mongoose.Schema(
       type: Array,
       default: [],
     },
+    status : {
+      type : String,
+      default : "onHold"
+    }
   },
   {
     timestamps: true,

@@ -19,14 +19,17 @@ const App = () => {
   return (
     <div>
       <Router>
-        <Route
+        {/* <Route
           path="/admin"
           component={() => (
             <>
               <Nav /> <SideBar /> <Footer />
             </>
           )}
-        />
+        /> */}
+        <Route path="/admin" component={Nav} />
+        <Route path="/admin" component={SideBar} />
+        <Route path="/admin" component={Footer} />
         <Switch>
 
           <Route path="/admin/dashboard" component={Dashboard} />

@@ -33,7 +33,6 @@ const AgentUpdateModal = ({ agent }) => {
   );
 
   const dispatch = useDispatch();
-  console.log("CALLLL : ", peopleToCall);
   // SUBMIT HANDLER
   const submitHandler = (e) => {
     e.preventDefault();
@@ -315,7 +314,7 @@ const AgentUpdateModal = ({ agent }) => {
                       checked={confidentiality}
                       onChange={(e) => setConfidentiality(e.target.checked)}
                     />
-                    <label className="form-check-label" for="confidentiality">
+                    <label className="form-check-label" htmlFor="confidentiality">
                       &nbsp; Accepter la politique de confidentialité
                     </label>
                   </div>
