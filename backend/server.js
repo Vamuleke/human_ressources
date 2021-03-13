@@ -3,9 +3,10 @@ import config from "./config.js"
 import dotenv from "dotenv"
 import bodyParser from "body-parser";
 import userRoote from './routes/userRouter.js'
-import path from 'path';
+
 import mongoose from 'mongoose'
 import agentRouter from './routes/agentRouter.js';
+import projectRouter from './routes/projectRouter.js';
 dotenv.config();
 
 const mongodbUrl = config.MONGODB_URL
@@ -24,8 +25,7 @@ app.use(bodyParser.json({ limit: '50mb' }))
 
 app.use('/api/users',userRoote)
 app.use('/api/agents',agentRouter)
-const __dirname = path.resolve();
-app.use('/uploads', express.static(path.join(__dirname, '/../uploads')));
+app.use('/api/projects', projectRouter)
 app.use((error, req, resp, next) => {
     resp.status(500).send({ message: error.message })
 })

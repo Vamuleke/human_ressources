@@ -130,7 +130,7 @@ const AgentCreate = (props) => {
     setEligibilityDate("");
   };
 
-  // FONCTION POUR GERER L'UPLOD DE L'IMAGE
+  // FONCTION POUR GERER L'UPLOAD DE L'IMAGE
   const uploadPhotoHandler = (e) => {
     e.preventDefault();
 
@@ -429,10 +429,14 @@ const AgentCreate = (props) => {
                                 />
                               </div>
 
-                              <div className="col-sm-1 pl-2">
+                              <div className="col-sm-2 pl-2">
                                 <button
                                   type="button"
-                                  className="btn btn-danger btn-sm"
+                                  className={
+                                    peopleToCall.length > 1
+                                      ? "btn btn-danger btn-sm"
+                                      : "btn btn-danger btn-sm disabled"
+                                  }
                                   onClick={(e) =>
                                     removePeopleToCallHandler(e, key)
                                   }
@@ -454,7 +458,7 @@ const AgentCreate = (props) => {
 
                       <div className="form-group">
                         <label htmlFor="skill" className="d-block">
-                          Compétences + Niveau
+                          Compétence + Niveau
                         </label>
                         <br />
 
@@ -483,10 +487,14 @@ const AgentCreate = (props) => {
                                 />
                               </div>
 
-                              <div className="col-sm-1 pl-2">
+                              <div className="col-sm-2 pl-2">
                                 <button
                                   type="button"
-                                  className="btn btn-danger btn-sm"
+                                  className={
+                                    skills.length > 1
+                                      ? "btn btn-danger btn-sm"
+                                      : "btn btn-danger btn-sm disabled"
+                                  }
                                   onClick={(e) => removeSkillHandler(e, key)}
                                 >
                                   <i className="fa fa-times"></i>

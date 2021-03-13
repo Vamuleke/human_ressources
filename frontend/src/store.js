@@ -12,6 +12,7 @@ import {
   getAgentInfosReducer,
   getAgentSingleDetailsReducer
 } from './reducers/agentRecucers'
+import { getProjectInfosReducer, createProjectReducer } from './reducers/projectReducers'
 
 // const userInfo = Cookie.getJSON("userInfo") || null;
 const initialState = {
@@ -29,7 +30,9 @@ const reducer = combineReducers({
   userDetail: profileDetailsReducer,
   userRegister: userRegisterReducer,
   agentCreate: createAgentReducer,
-  agentSingleDetails: getAgentSingleDetailsReducer
+  agentSingleDetails: getAgentSingleDetailsReducer,
+  projectInfos : getProjectInfosReducer,
+  createProject : createProjectReducer
 })
 
 const composeEnHancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
