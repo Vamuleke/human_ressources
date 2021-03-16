@@ -32,7 +32,7 @@ function userRegisterReducer(state = {}, action) {
     
 }
 
-function profileDetailsReducer(state={users: {}},action){
+function profileDetailsReducer(state={users: []},action){
    
     switch (action.type) {
         case USERS_LIST_REQUEST:

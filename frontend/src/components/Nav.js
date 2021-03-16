@@ -8,6 +8,7 @@ const Nav = props => {
   if (!userInfo) {
     window.location.href = '/'
   }
+ 
   const dispatch = useDispatch()
   const signoutHandler = () => {
     dispatch(signout())
@@ -122,6 +123,11 @@ const Nav = props => {
                 <li>
                   <Link to='/admin/users/register' >
                     <i className='lnr lnr-exit'></i> <span>S'enregistrer</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/admin/users/list' >
+                    <i className='lnr lnr-exit'></i> <span>Liste des utilisateurs</span>
                   </Link>
                 </li>
               </ul>

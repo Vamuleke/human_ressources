@@ -30,4 +30,4 @@ app.use((error, req, resp, next) => {
     resp.status(500).send({ message: error.message })
 })
 
-app.listen(5500, () => console.log ("Server runs on port : http://localhost:5500"));
+app.listen(5000, () => console.log ("Server runs on port : http://localhost:5000"));

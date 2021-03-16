@@ -12,9 +12,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Toggle from "react-toggle";
 import "react-toggle/style.css";
 import { Link } from "react-router-dom";
+import LoadingBox from "../LoadingBox.js";
 const ProfileCreate = (props) => {
   const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
+  const {loading, userInfo } = userSignin;
   const [id, setId] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
@@ -89,6 +90,7 @@ const ProfileCreate = (props) => {
                     <span className="font-weight-light h3">
                       Modifier mon profil
                     </span>
+                    {loading && <LoadingBox/>}
                   </div>
                 </div>
               </div>

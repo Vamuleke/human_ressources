@@ -3,7 +3,7 @@ import User from "../models/userModel.js";
 import { getToken, isAdmin, isAuth } from "../util.js";
 import expressAsyncHandler from 'express-async-handler'
 const router = express.Router();
-router.get("/profile", async (req,resp)=>{
+router.get("/list", async (req,resp)=>{
   const users= await User.find({});
   resp.send(users)
   })

@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import LoadingBox from '../LoadingBox'
 const ProfileHome = () => {
   const userSignin = useSelector(state => state.userSignin)
-  const { userInfo } = userSignin
+  const { userInfo,loading } = userSignin
   return (
     <div className='main'>
       <div className='main-content'>
         <div className='col-md-3'></div>
-
+        
         <div className='text-center col-md-6' style={{ marginTop: '30px' }}>
           <img
             src={userInfo.photo}
