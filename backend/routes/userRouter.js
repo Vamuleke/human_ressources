@@ -3,6 +3,15 @@ import User from "../models/userModel.js";
 import { getToken, isAdmin, isAuth } from "../util.js";
 import expressAsyncHandler from 'express-async-handler'
 const router = express.Router();
+// SEED
+router.get ('/seed', expressAsyncHandler (async (request, response) => {
+  await User.deleteMany ({})
+  const createdUsers = await User.insertMany (data.users)
+
+  response.send (createdUsers)
+
+  //response.send ("Deleted...")
+}))
 router.get("/list", async (req,resp)=>{
   const users= await User.find({});
   resp.send(users)

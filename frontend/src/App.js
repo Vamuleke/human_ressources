@@ -15,6 +15,7 @@ import ProjectHome from "./components/projects/ProjectHome";
 import PageNotFound from "./components/PageNotFound";
 import ProjectCreate from "./components/projects/ProjectCreate";
 import RegisterList from "./components/RegisterList";
+import AppChat from "./components/tchat/App";
 
 const App = () => {
   return (
@@ -47,7 +48,9 @@ const App = () => {
           <Route exact path="/admin/projects" component={ProjectHome} />
           <Route path="/admin/projects/create" component={ProjectCreate} />
           <Route path="/admin/users/list" component={RegisterList} />
-          
+
+          <Route  path="/admin/chat" component={AppChat} />
+          {/* <Route  path="/admin/chat/:id"  /> */}
           <Route component={PageNotFound} />
         </Switch>
       </Router>
