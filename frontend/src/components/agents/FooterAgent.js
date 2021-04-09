@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer = () => {
+const FooterAgent = () => {
     return (
         <>
             <div className="clearfix"></div>
@@ -13,4 +13,4 @@ const Footer = () => {
     )
 }
 
-export default Footer
+export default FooterAgent

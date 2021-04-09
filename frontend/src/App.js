@@ -14,6 +14,11 @@ import Register from "./components/Register";
 import ProjectHome from "./components/projects/ProjectHome";
 import PageNotFound from "./components/PageNotFound";
 import ProjectCreate from "./components/projects/ProjectCreate";
+import NavAgent from "./components/agents/NavAgent";
+import SideBarAgent from "./components/agents/SideBarAgent";
+import FooterAgent from "./components/agents/FooterAgent";
+import MyInfos from "./components/agents/MyInfos";
+import ProjectsAgent from "./components/agents/ProjectsAgent";
 
 const App = () => {
   return (
@@ -30,7 +35,14 @@ const App = () => {
         <Route path="/admin" component={Nav} />
         <Route path="/admin" component={SideBar} />
         <Route path="/admin" component={Footer} />
+
+        <Route path="/agent" component={NavAgent} />
+        <Route path="/agent" component={SideBarAgent} />
+        <Route path="/agent" component={FooterAgent} />
+
         <Switch>
+
+          {/* ============ ADMIN ========== */}
 
           <Route path="/admin/dashboard" component={Dashboard} />
           <Route exact path="/" component={Login} />
@@ -45,7 +57,12 @@ const App = () => {
 
           <Route exact path="/admin/projects" component={ProjectHome} />
           <Route path="/admin/projects/create" component={ProjectCreate} />
-          
+
+          {/* ============ AGENT ADMIN ========== */}
+          <Route path="/agent/myinfos" component={MyInfos} />
+          <Route path="/agent/projects" component={ProjectsAgent} />
+
+          {/* ============ 404 ========== */}
           <Route component={PageNotFound} />
         </Switch>
       </Router>
