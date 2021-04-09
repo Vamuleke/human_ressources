@@ -11,6 +11,11 @@ const projectSchema = new mongoose.Schema(
       required: true,
       default: new Date(),
     },
+    projectCreateDate: {
+      type: Date,
+      required: true,
+      default: new Date(),
+    },
     projectResponsible: {
       type: mongoose.Types.ObjectId,
       ref: "Agent",
@@ -18,7 +23,7 @@ const projectSchema = new mongoose.Schema(
     },
     tasks: {
       type: Array,
-      default: [],
+      default: []
     },
     status : {
       type : String,

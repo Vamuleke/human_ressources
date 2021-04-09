@@ -19,9 +19,9 @@ projectRouter.get ('/', expressAsyncHandler ( async (req, res) => {
 }))
 
 projectRouter.post ('/', expressAsyncHandler (async (req, res) => {
-    const {projectName, projectDeadline, projectResponsible, tasks} = req.body
+    const {projectName, projectDeadline, projectCreationDate, projectResponsible, tasks} = req.body
 
-    const createdProject = await Project.create ({projectName, projectDeadline, projectResponsible, tasks})
+    const createdProject = await Project.create ({projectName, projectDeadline, projectCreationDate, projectResponsible, tasks})
 
     res.status (201).send (createdProject)
 }))

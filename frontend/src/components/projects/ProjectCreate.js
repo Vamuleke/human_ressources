@@ -13,6 +13,7 @@ const ProjectCreate = () => {
   const [projectName, setProjectName] = useState("");
   const [projectDeadline, setProjectDeadline] = useState("");
   const [projectResponsible, setProjectResponsible] = useState("");
+  const [projectCreationDate, setProjectCreationDate] = useState("");
 
   // AJOUT/SUPPRESSION D'UN TASK - DYNAMIC FORM FIELDS
   const addTaskRow = () => {
@@ -64,6 +65,7 @@ const ProjectCreate = () => {
     const project = {
       projectName: projectName,
       projectDeadline: projectDeadline,
+      ProjectCreationDate: projectCreationDate,
       projectResponsible: projectResponsible,
       tasks: tasks,
     };
@@ -131,6 +133,16 @@ const ProjectCreate = () => {
                       />
                     </div>
                     <div className="form-group">
+                      <label htmlFor="projectDeadline">Date de création</label>
+                      <input
+                        type="date"
+                        id="projectCreationDate"
+                        className="form-control"
+                        value={projectCreationDate}
+                        onChange={(e) => setProjectCreationDate(e.target.value)}
+                      />
+                    </div>
+                    <div className="form-group">
                       <label htmlFor="projectDeadline">Date d'échéance</label>
                       <input
                         type="date"
@@ -140,6 +152,9 @@ const ProjectCreate = () => {
                         onChange={(e) => setProjectDeadline(e.target.value)}
                       />
                     </div>
+                  </div>
+
+                  <div className="col-md-6">
                     <div className="form-group">
                       <label htmlFor="projectResponsible">Responsable</label>
                       <select
@@ -160,9 +175,6 @@ const ProjectCreate = () => {
                           })}
                       </select>
                     </div>
-                  </div>
-
-                  <div className="col-md-6">
                     <div className="form-group">
                       <label htmlFor="#task">Tâche + Deadline</label>
                       {tasks.map((task, key) => {
