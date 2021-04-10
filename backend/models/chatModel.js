@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import moment from 'moment'
 const chatSchema = new mongoose.Schema(
   {
   text: {
@@ -16,8 +17,8 @@ const chatSchema = new mongoose.Schema(
         type : String
     },
     createdAt: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: moment().format('h:mm a')
     }
   })
 const Chat = mongoose.model('messagecontent', chatSchema)

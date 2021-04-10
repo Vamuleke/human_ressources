@@ -1,6 +1,6 @@
 import express from 'express';
 import Chat from '../models/chatModel.js';
-import User from '../models/userModel.js'
+import moment from 'moment'
 const router = express.Router()
 router.get('/', async (req, res) => {
         try {
@@ -25,7 +25,7 @@ router.post('/new', async (req, res) => {
                 room,
                 text,
                 receiver,
-                createdAt: new Date()
+                createdAt: moment().format('h:mm a')
             })
             await newMessage.save()
         }

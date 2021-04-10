@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import EmojiPicker from 'emoji-picker-react'
-import avatarImage from './image/avatarImage.jpg'
 import Search from '@material-ui/icons/Search'
 import SendIcon from '@material-ui/icons/Send'
 import CloseIcon from '@material-ui/icons/Close'
@@ -21,12 +20,12 @@ export default function ChatWindow ({ user, data }) {
   }
   let socket
 
-//Swap HelperFunction
-function swap(input, value_1, value_2) {
-  var temp = input[value_1];
-  input[value_1] = input[value_2];
-  input[value_2] = temp;
-}
+  //Swap HelperFunction
+  function swap (input, value_1, value_2) {
+    var temp = input[value_1]
+    input[value_1] = input[value_2]
+    input[value_2] = temp
+  }
 
   const body = useRef()
 
@@ -39,8 +38,8 @@ function swap(input, value_1, value_2) {
   const [messageArray, setMessageArray] = useState([])
   const [listening, setListening] = useState(false)
   const getMessage = useSelector(state => state.getMessage)
-  const { message,loading } = getMessage
-   
+  const { message, loading } = getMessage
+
   const handleEmojiClick = (e, emojiObject) => {
     setText(text + emojiObject.emoji)
   }
@@ -52,28 +51,17 @@ function swap(input, value_1, value_2) {
   }
   const dispatch = useDispatch()
   useEffect(() => {
-   
     setSender(user._id)
     setReceiver(data._id)
-    const idroom=user._id +"."+ data._id
-    let tempArr = idroom.split(".")
+    const idroom = user._id + '.' + data._id
+    let tempArr = idroom.split('.')
     setRoom(idroom)
     swap(tempArr, 0, 1)
     let tempRoom2 = tempArr[0] + '.' + tempArr[1]
     setRoom1(tempRoom2)
     dispatch(getPrivateConversation())
-
-  //   socket.on("new Message", (data) => {
-  //     setMessageArray([...messageArray, data])
-  // })
-
-  // return () => {
-  //     socket.emit('disconnect')
-  //     socket.off()
-  // }
-
   }, [data._id, user._id])
-   
+
   const handleMicClick = () => {
     if (recognition !== null) {
       recognition.onstart = () => {
@@ -94,7 +82,7 @@ function swap(input, value_1, value_2) {
       body.current.scrollTop =
         body.current.scrollHeight - body.current.offsetHeight
     }
-  }, [])
+  }, [message])
 
   const handleSendClick = () => {
     let messageObj = {
@@ -104,9 +92,9 @@ function swap(input, value_1, value_2) {
       receiver
     }
     dispatch(sendMessage(messageObj))
-setText('')
-setEmojiOpen(false)
-    console.log(text, +'' + sender + '' + receiver)
+    dispatch(getPrivateConversation())
+    setText('')
+    setEmojiOpen(false)
     
   }
   const handleInputKeyUp = e => {
@@ -114,14 +102,13 @@ setEmojiOpen(false)
       handleSendClick()
     }
   }
-  
+
   return (
     <div className='chatWindow'>
       <div className='chatWindow--header'>
         <div className='chatWindow--headerinfo'>
           <img className='chatWindow--avatar' src={data.photo} alt='' />
           <div className='chatWindow--name'>{data.name}</div>
-        
         </div>
         <div className='chatWindow--headerbuttons'>
           <div className='chatWindow--btn'>
@@ -130,12 +117,21 @@ setEmojiOpen(false)
         </div>
       </div>
       <div ref={body} className='chatWindow--body'>
-      {loading ? <span></span>:(
-       message.map((item, key) => (
-         
-          <MessageItem key={key} data={item} user={user} room={room} room1={room1} />
-        ))) }  
+        {loading ? (
+          <span></span>
+        ) : (
+          message.map((item, key) => (
+            <MessageItem
+              key={key}
+              data={item}
+              user={user}
+              room={room}
+              room1={room1}
+            />
+          ))
+        )}
       </div>
+      
       <div
         className='chatWindow--emojiarea'
         style={{ height: emojiOpen ? '200px' : '0px' }}
