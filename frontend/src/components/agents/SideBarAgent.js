@@ -27,7 +27,7 @@ const SideBarAgent = (props) => {
             </li>
 
             <li>
-              <Link to="/agent/chat" className={setActive (propsLocation, "/admin/chat")}>
+              <Link to="/agent/chat" className={setActive (propsLocation, "/agent/chat")}>
                 <i className="lnr lnr-bubble"></i>
                 <span>Chat</span>
               </Link>

@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getAgentSingleDetails } from "../../actions/agentActions";
-// import LoadingBox from "../LoadingBox";
+import LoadingBox from "../LoadingBox";
 // import MessageBox from "../MessageBox";
-// import moment from "moment";
+import moment from "moment";
 
 const MyInfos = (props) => {
   // const agentId = props.match.params.id;
@@ -17,11 +16,10 @@ const MyInfos = (props) => {
   //   dispatch(getAgentSingleDetails(agentId));
   // }, [dispatch, agentId]);
 
-  // const agentDetails = !loading && !error && agent;
+  // const userInfo = !loading && !error && agent;
 const userSignin = useSelector (state => state.userSignin)
 const {loading, userInfo, error} = userSignin
 
-  // const error = false;
   return (
     <div className="main">
       <div className="main-content">
@@ -47,9 +45,9 @@ const {loading, userInfo, error} = userSignin
               <div className="card-body">
                 <div className="row">
                   <div className="col-md-4">
-                    {/* {loading && <LoadingBox />} */}
+                    {loading && <LoadingBox />}
                     <img
-                      src="https://mma.prnewswire.com/media/960682/Thank_U_Next_LUXE_Brands.jpg?w=950"
+                      src={userInfo.photo}
                       className="rounded"
                       width="300"
                       height="433"
@@ -64,88 +62,83 @@ const {loading, userInfo, error} = userSignin
                     <div className="row mt-2">
                       <div className="col-md-6 h5">Nom(s)</div>
                       <div className="col-md-6 h5 text-right">
-                        {"Ariana Grande"}
+                        {userInfo.name}
                       </div>
 
                       <div className="col-md-6 h5">Email</div>
                       <div className="col-md-6 h5 text-right">
-                        {"ariana@hotmail.com"}
+                        {userInfo.email}
                       </div>
 
                       <div className="col-md-6 h5">Naissance</div>
                       <div className="col-md-6 h5 text-right">
-                        {/* {moment(agentDetails.birthday).format("DD/MM/YYYY")} */}
-                        16/09/1996
+                        {moment(userInfo.birthday).format("DD/MM/YYYY")}
                       </div>
 
                       <div className="col-md-6 h5">Nationalité</div>
                       <div className="col-md-6 h5 text-right">
-                        {"Américaine"}
+                        {userInfo.nationality}
                       </div>
 
                       <div className="col-md-6 h5">État civil</div>
                       <div className="col-md-6 h5 text-right">
-                        {"Célibataire"}
+                        {userInfo.civilStatus}
                       </div>
 
                       <div className="col-md-6 h5">Sexe</div>
                       <div className="col-md-6 h5 text-right">
-                        {"Féminin"}
+                      {userInfo.sex === "M" ? "Masculin" : "Féminin"}
                       </div>
 
                       <div className="col-md-6 h5">Téléphone</div>
                       <div className="col-md-6 h5 text-right">
-                        {"+13476456606"}
+                      {userInfo.phone}
                       </div>
 
                       <div className="col-md-6 h5">Adresse</div>
                       <div className="col-md-6 h5 text-right">
-                        {"New York, Wolf Street 34"}
+                        {userInfo.address}
                       </div>
                       <hr className="text-dark"/>
                       <div className="col-md-6 h5">Prise de service</div>
                       <div className="col-md-6 h5 text-right">
-                        {/* {moment(agentDetails.serviceTaking).format("DD/MM/YYYY")} */}
-                        03/04/2021
+                        {moment(userInfo.serviceTaking).format("DD/MM/YYYY")}
                       </div>
 
                       <div className="col-md-6 h5">Date d'adminisibilité</div>
                       <div className="col-md-6 h5 text-right">
-                        15/04/2021
+                        {moment(userInfo.eligibilityDate).format("DD/MM/YYYY")}
                       </div>
 
                       <div className="col-md-6 h5">Salaire de base</div>
                       <div className="col-md-6 h5 text-right">
-                        784000$
+                        {userInfo.baseSalary}$
                       </div>
 
                       <div className="col-md-6 h5">Fonction</div>
                       <div className="col-md-6 h5 text-right">
-                        Designer Web
+                        {userInfo.fonction}
                       </div>
 
                       <div className="col-md-6 h5">Club social</div>
                       <div className="col-md-6 h5 text-right">
-                        Havard
+                        {userInfo.socialClub}
                       </div>
 
                       <div className="col-md-6 h5">Personnes à appeler</div>
                       <div className="col-md-6 h5 text-right">
 
-                        {/* {!loading && !error && agentDetails.peopleToCall.map (ptc => {
+                        {!loading && !error && userInfo.peopleToCall.map (ptc => {
                           return (
                             <h6 className="p-0 m-0" key={ptc._id}>{ptc.nameCall} ({ptc.phoneCall})</h6>
                           )
-                        })} */}
-                        <h6 className="p-0 m-0">Foo (+155566666)</h6>
-                        <h6 className="p-0 m-0">Bar (+155564466)</h6>
+                        })}
         
                       </div>
 
                       <div className="col-md-6 h5">Confidentialité</div>
                       <div className="col-md-6 h5 text-right">
-                        {/* {agentDetails.confidentiality ? "Accepté" : "Refusé"} */}
-                        
+                        {userInfo.confidentiality ? "Accepté" : "Refusé"}
                       </div>
                     </div>
                   </div>
@@ -155,10 +148,10 @@ const {loading, userInfo, error} = userSignin
                     </span>
                     <div className="row mt-2">
                       <div className="col-md-12">
-                        {/* {loading ? (
+                        {loading ? (
                           <LoadingBox />
                         ) : (
-                          agentDetails.skills.map((item) => {
+                          userInfo.skills.map((item) => {
                             return (
                               <>
                                 <small>{item.skill}</small>
@@ -185,7 +178,7 @@ const {loading, userInfo, error} = userSignin
                               </>
                             );
                           })
-                        )} */}
+                        )}
                       </div>
                     </div>
                   </div>

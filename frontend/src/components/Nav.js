@@ -50,11 +50,10 @@ const Nav = props => {
           <a
             className='btn btn-success update-pro'
             href='#'
-            title='Upgrade to Pro'
-            target='_blank'
+            title='Projets'
           >
             
-            <Link to="/admin/projects"><i className='fa fa-layer-group text-white'></i> <span className="text-white">&nbsp; PROJETS</span></Link>
+            <Link to="/admin/projects/"><span className="text-white"><i className='fa fa-layer-group text-white'></i>&nbsp; PROJETS</span></Link>
             
           </a>
         </div>

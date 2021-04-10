@@ -23,13 +23,27 @@ router.get("/list", async (req,resp)=>{
   })
   if(signinUser){
 resp.send({
-  _id:signinUser.id,
-  name:signinUser.name,
-  email:signinUser.email,
-  password:signinUser.password,
-  photo:signinUser.photo,
-  isAdmin:signinUser.isAdmin,
-  token:getToken(signinUser)
+  _id : signinUser.id,
+  name : signinUser.name,
+  email : signinUser.email,
+  password : signinUser.password,
+  photo : signinUser.photo,
+  isAdmin : signinUser.isAdmin,
+  token : getToken(signinUser),
+  skills : signinUser.skills,
+  confidentiality : signinUser.confidentiality,
+  peopleToCall : signinUser.peopleToCall,
+  birthday : signinUser.birthday,
+  nationality : signinUser.nationality,
+  civilStatus : signinUser.civilStatus,
+  sex : signinUser.sex,
+  address : signinUser.address,
+  serviceTaking : signinUser.serviceTaking,
+  baseSalary : signinUser.baseSalary,
+  fonction : signinUser.fonction,
+  socialClub : signinUser.socialClub,
+  phone : signinUser.phone,
+  eligibilityDate : signinUser.eligibilityDate
 })
   }else{
           resp.status(401).send({message:"nom d'utilisateur ou mot de passe incorrect"})

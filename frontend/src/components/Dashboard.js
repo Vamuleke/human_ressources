@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAgentInfos } from "../actions/agentActions";
 import { getProjectInfos } from "../actions/projectActions";
+import {Link} from 'react-router-dom'
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const Dashboard = () => {
                   className="card text-white bg-primary mb-3"
                   style={{ maxWidth: "40rem" }}
                 >
-                  <div className="card-header text-center pb-3"><h3>Agents Masculins</h3></div>
+                  <div className="card-header text-center pb-3"><Link to="/admin/agents"><h3 className="text-white">Agents Masculins</h3></Link></div>
                   <div className="card-body">
                     <div className="card-text text-center pb-3 display-1">{allAgentsMale.length}</div>
                   </div>
@@ -65,7 +66,7 @@ const Dashboard = () => {
                   className="card text-white bg-info mb-3"
                   style={{ maxWidth: "40rem" }}
                 >
-                  <div className="card-header text-center pb-3"><h3>Agents Féminins</h3></div>
+                  <div className="card-header text-center pb-3"><Link to="/admin/agents"><h3 className="text-white">Agents Féminins</h3></Link></div>
                   <div className="card-body">
                     <div className="card-text text-center pb-3 display-1">{allAgentsFemale.length}</div>
                   </div>
@@ -77,7 +78,7 @@ const Dashboard = () => {
                   className="card text-white bg-danger mb-3"
                   style={{ maxWidth: "40rem" }}
                 >
-                  <div className="card-header text-center pb-3"><h3>Projets en Attente</h3></div>
+                  <div className="card-header text-center pb-3"><Link to="/admin/projects"><h3 className="text-white">Projets en Attente</h3></Link></div>
                   <div className="card-body">
                     <div className="card-text text-center pb-3 display-1">{projectsOnHold.length}</div>
                   </div>
@@ -91,7 +92,7 @@ const Dashboard = () => {
                   className="card text-white bg-warning mb-3"
                   style={{ maxWidth: "40rem" }}
                 >
-                  <div className="card-header text-center pb-3"><h3>Projets en Cours</h3></div>
+                  <div className="card-header text-center pb-3"><Link to="/admin/projects"><h3 className="text-white">Projets en Cours</h3></Link></div>
                   <div className="card-body">
                     <div className="card-text text-center pb-3 display-1">{projectsInProgress.length}</div>
                   </div>
@@ -103,7 +104,7 @@ const Dashboard = () => {
                   className="card text-white bg-success mb-3"
                   style={{ maxWidth: "40rem" }}
                 >
-                  <div className="card-header text-center pb-3"><h3>Projets Terminés</h3></div>
+                  <div className="card-header text-center pb-3"><Link to="/admin/projects"><h3 className="text-white">Projets Terminés</h3></Link></div>
                   <div className="card-body">
                     <div className="card-text text-center pb-3 display-1">{projectsFinished.length}</div>
                   </div>
@@ -115,7 +116,7 @@ const Dashboard = () => {
                   className="card text-white bg-dark mb-3"
                   style={{ maxWidth: "40rem" }}
                 >
-                  <div className="card-header text-center pb-3"><h3>Projets Livrés</h3></div>
+                  <div className="card-header text-center pb-3"><Link to="/admin/projects"><h3 className="text-white">Projets Livrés</h3></Link></div>
                   <div className="card-body">
                     <div className="card-text text-center pb-3 display-1">{projectsDelivered.length}</div>
                   </div>

@@ -2,6 +2,7 @@ import express, { request, response } from 'express'
 import {data} from '../data.js'
 import Agent from '../models/agentModel.js'
 import expressAsyncHandler from 'express-async-handler'
+import userModel from '../models/userModel.js'
 
 const agentRouter = express.Router ()
 
@@ -25,6 +26,7 @@ agentRouter.get ('/', expressAsyncHandler (async (request, response) => {
 // CREE UN NOUVEL AGENT
 agentRouter.post ('/', expressAsyncHandler (async (request, response) => {
     const createdAgent = await Agent.insertMany (request.body)
+    const createdUser = await userModel.insertMany (request.body)
 
     response.send (createdAgent)
 }))

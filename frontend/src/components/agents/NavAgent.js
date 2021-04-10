@@ -17,7 +17,7 @@ const NavAgent = props => {
   return (
     <nav className='navbar navbar-default navbar-fixed-top'>
       <div className='brand'>
-        <Link to='/admin/dashboard'>
+        <Link to='/agent/myinfos'>
           <img
             src={process.env.PUBLIC_URL + '/assets/images/logo-dark.png'}
             alt='CRES Pro App'
@@ -50,11 +50,10 @@ const NavAgent = props => {
           <a
             className='btn btn-success update-pro'
             href='#'
-            title='Upgrade to Pro'
-            target='_blank'
+            title='Projets'
           >
             
-            <Link to="/admin/projects"><i className='fa fa-layer-group text-white'></i> <span className="text-white">&nbsp; PROJETS</span></Link>
+            <Link to="/agent/chat/"><i className='fa fa-comment-dots text-white'></i> <span className="text-white">&nbsp; CHAT</span></Link>
             
           </a>
         </div>
