@@ -34,7 +34,7 @@ const detailsUsers = userId => async dispatch => {
 const listUsers = () => async dispatch => {
   try {
     dispatch({ type: USERS_LIST_REQUEST })
-    const { data } = await Axios.get('/api/users/')
+    const { data } = await Axios.get('/api/users/list')
     dispatch({ type: USERS_LIST_SUCCESS, payload: data })
   } catch (error) {
     dispatch({
@@ -124,4 +124,4 @@ const signout = () => dispatch => {
   dispatch({ type: USER_SIGN_OUT })
 }
 
-export { signin, signout, update, detailsUsers,registerUser }
+export { signin, signout, update, detailsUsers,registerUser,listUsers }

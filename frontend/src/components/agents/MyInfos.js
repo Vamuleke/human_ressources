@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 // import { useDispatch, useSelector } from "react-redux";
 // import { getAgentSingleDetails } from "../../actions/agentActions";
@@ -17,7 +18,10 @@ const MyInfos = (props) => {
   // }, [dispatch, agentId]);
 
   // const agentDetails = !loading && !error && agent;
-  const error = false;
+const userSignin = useSelector (state => state.userSignin)
+const {loading, userInfo, error} = userSignin
+
+  // const error = false;
   return (
     <div className="main">
       <div className="main-content">
@@ -30,7 +34,7 @@ const MyInfos = (props) => {
                 <div className="row py-2">
                   <div className="col-md-6 mt-1">
                     <span className="font-weight-light h3">
-                      Ariana Grande
+                      {userInfo.name}
                     </span>
                   </div>
                   {/* <div className="col-md-6 text-right mt-1">

@@ -1,18 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { signout } from '../actions/userActions'
-
+import { useDispatch, useSelector } from 'react-redux'
+import { signout } from '../../actions/userActions'
 const NavAgent = props => {
-  // const userSignin = useSelector(state => state.userSignin)
-  // const { userInfo } = userSignin
-  // if (!userInfo) {
-  //   window.location.href = '/'
-  // }
-  // const dispatch = useDispatch()
-  // const signoutHandler = () => {
-  //   dispatch(signout())
-  // }
+  const userSignin = useSelector(state => state.userSignin)
+  const { userInfo } = userSignin
+  if (!userInfo) {
+    window.location.href = '/'
+  }
+ 
+  const dispatch = useDispatch()
+  const signoutHandler = () => {
+    dispatch(signout())
+  }
 
   return (
     <nav className='navbar navbar-default navbar-fixed-top'>
@@ -28,10 +28,11 @@ const NavAgent = props => {
       <div className='container-fluid'>
         <div className='navbar-btn'>
           <button type='button' className='btn-toggle-fullwidth'>
-            <i className='lnr lnr-arrow-left-circle'></i>
+            {/* <i className='lnr lnr-arrow-left-circle'></i> */}
+            <span class="lnr lnr-menu"></span>
           </button>
         </div>
-        <form className='navbar-form navbar-left'>
+        {/* <form className='navbar-form navbar-left'>
           <div className='input-group'>
             <input
               type='text'
@@ -44,7 +45,7 @@ const NavAgent = props => {
               </button>
             </span>
           </div>
-        </form>
+        </form> */}
         <div className='navbar-btn navbar-btn-right'>
           <a
             className='btn btn-success update-pro'
@@ -52,7 +53,9 @@ const NavAgent = props => {
             title='Upgrade to Pro'
             target='_blank'
           >
-            <i className='fa fa-rocket'></i> <span>SAUVEGARDER</span>
+            
+            <Link to="/admin/projects"><i className='fa fa-layer-group text-white'></i> <span className="text-white">&nbsp; PROJETS</span></Link>
+            
           </a>
         </div>
         <div id='navbar-menu'>
@@ -63,10 +66,11 @@ const NavAgent = props => {
                 className='dropdown-toggle icon-menu'
                 data-toggle='dropdown'
               >
-                <i className='lnr lnr-alarm'></i>
-                <span className='badge bg-danger'>5</span>
+                {/* <i className='lnr lnr-home'></i> */}
+               
+                {/* <span className='badge bg-danger'>5</span> */}
               </a>
-              <ul className='dropdown-menu notifications'>
+              {/* <ul className='dropdown-menu notifications'>
                 <li>
                   <a href='#' className='notification-item'>
                     <span className='dot bg-warning'></span>Notification 1
@@ -82,9 +86,9 @@ const NavAgent = props => {
                     Voir toutes les notifications
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </li>
-            <li className='dropdown'>
+            {/* <li className='dropdown'>
               <a href='#' className='dropdown-toggle' data-toggle='dropdown'>
                 <i className='lnr lnr-question-circle'></i> <span>Aide</span>{' '}
                 <i className='icon-submenu lnr lnr-chevron-down'></i>
@@ -97,11 +101,11 @@ const NavAgent = props => {
                   <a href='#'>Sécurité</a>
                 </li>
               </ul>
-            </li>
+            </li> */}
             <li className='dropdown'>
               <a href='#' className='dropdown-toggle' data-toggle='dropdown'>
-                <img src={""} className='img-circle' alt='Avatar' />{' '}
-                <span>{""}</span>{' '}
+                <img src={userInfo.photo} className='img-circle' alt='Avatar' />{' '}
+                <span>{userInfo.name}</span>{' '}
                 <i className='icon-submenu lnr lnr-chevron-down'></i>
               </a>
               <ul className='dropdown-menu'>
@@ -116,13 +120,18 @@ const NavAgent = props => {
                   </a>
                 </li>
                 <li>
-                  <Link to='/#signout' onClick={""}>
+                  <Link to='/#signout' onClick={signoutHandler}>
                     <i className='lnr lnr-exit'></i> <span>Déconnexion</span>
                   </Link>
                 </li>
                 <li>
                   <Link to='/admin/users/register' >
                     <i className='lnr lnr-exit'></i> <span>S'enregistrer</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/admin/users/list' >
+                    <i className='lnr lnr-exit'></i> <span>Liste des utilisateurs</span>
                   </Link>
                 </li>
               </ul>

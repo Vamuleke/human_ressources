@@ -60,12 +60,12 @@ const SideBar = (props) => {
                 </ul>
               </div>
             </li>
-            <li>
+            {/* <li>
               <Link to="/admin/help" className={setActive (propsLocation, "/admin/help")}>
                 <i className="lnr lnr-question-circle"></i>
                 <span>Aide</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

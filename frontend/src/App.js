@@ -19,6 +19,8 @@ import SideBarAgent from "./components/agents/SideBarAgent";
 import FooterAgent from "./components/agents/FooterAgent";
 import MyInfos from "./components/agents/MyInfos";
 import ProjectsAgent from "./components/agents/ProjectsAgent";
+import RegisterList from "./components/RegisterList";
+import AppChat from "./components/tchat/App";
 
 const App = () => {
   return (
@@ -63,6 +65,11 @@ const App = () => {
           <Route path="/agent/projects" component={ProjectsAgent} />
 
           {/* ============ 404 ========== */}
+          <Route path="/admin/users/list" component={RegisterList} />
+
+          <Route  path="/admin/chat" component={AppChat} />
+          <Route  path="/agent/chat" component={AppChat} />
+          {/* <Route  path="/admin/chat/:id"  /> */}
           <Route component={PageNotFound} />
         </Switch>
       </Router>

@@ -27,18 +27,18 @@ const SideBarAgent = (props) => {
             </li>
 
             <li>
-              <Link to="/admin/chat" className={setActive (propsLocation, "/admin/chat")}>
+              <Link to="/agent/chat" className={setActive (propsLocation, "/admin/chat")}>
                 <i className="lnr lnr-bubble"></i>
                 <span>Chat</span>
               </Link>
             </li>
 
-            <li>
+            {/* <li>
               <Link to="/agent/projects" className={setActive (propsLocation, "/agent/projects")}>
                 <i className="lnr lnr-layers"></i>
                 <span>Projets</span>
               </Link>
-            </li>
+            </li> */}
 
             {/* <li>
               <a href="#subPages" data-toggle="collapse" className="collapsed">
@@ -60,12 +60,12 @@ const SideBarAgent = (props) => {
                 </ul>
               </div>
             </li> */}
-            <li>
+            {/* <li>
               <Link to="/admin/help" className={setActive (propsLocation, "/admin/help")}>
                 <i className="lnr lnr-question-circle"></i>
                 <span>Aide</span>
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

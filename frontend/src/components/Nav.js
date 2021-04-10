@@ -8,6 +8,7 @@ const Nav = props => {
   if (!userInfo) {
     window.location.href = '/'
   }
+ 
   const dispatch = useDispatch()
   const signoutHandler = () => {
     dispatch(signout())
@@ -27,10 +28,11 @@ const Nav = props => {
       <div className='container-fluid'>
         <div className='navbar-btn'>
           <button type='button' className='btn-toggle-fullwidth'>
-            <i className='lnr lnr-arrow-left-circle'></i>
+            {/* <i className='lnr lnr-arrow-left-circle'></i> */}
+            <span class="lnr lnr-menu"></span>
           </button>
         </div>
-        <form className='navbar-form navbar-left'>
+        {/* <form className='navbar-form navbar-left'>
           <div className='input-group'>
             <input
               type='text'
@@ -43,7 +45,7 @@ const Nav = props => {
               </button>
             </span>
           </div>
-        </form>
+        </form> */}
         <div className='navbar-btn navbar-btn-right'>
           <a
             className='btn btn-success update-pro'
@@ -51,7 +53,9 @@ const Nav = props => {
             title='Upgrade to Pro'
             target='_blank'
           >
-            <i className='fa fa-rocket'></i> <span>SAUVEGARDER</span>
+            
+            <Link to="/admin/projects"><i className='fa fa-layer-group text-white'></i> <span className="text-white">&nbsp; PROJETS</span></Link>
+            
           </a>
         </div>
         <div id='navbar-menu'>
@@ -62,10 +66,11 @@ const Nav = props => {
                 className='dropdown-toggle icon-menu'
                 data-toggle='dropdown'
               >
-                <i className='lnr lnr-alarm'></i>
-                <span className='badge bg-danger'>5</span>
+                {/* <i className='lnr lnr-home'></i> */}
+               
+                {/* <span className='badge bg-danger'>5</span> */}
               </a>
-              <ul className='dropdown-menu notifications'>
+              {/* <ul className='dropdown-menu notifications'>
                 <li>
                   <a href='#' className='notification-item'>
                     <span className='dot bg-warning'></span>Notification 1
@@ -81,9 +86,9 @@ const Nav = props => {
                     Voir toutes les notifications
                   </a>
                 </li>
-              </ul>
+              </ul> */}
             </li>
-            <li className='dropdown'>
+            {/* <li className='dropdown'>
               <a href='#' className='dropdown-toggle' data-toggle='dropdown'>
                 <i className='lnr lnr-question-circle'></i> <span>Aide</span>{' '}
                 <i className='icon-submenu lnr lnr-chevron-down'></i>
@@ -96,7 +101,7 @@ const Nav = props => {
                   <a href='#'>Sécurité</a>
                 </li>
               </ul>
-            </li>
+            </li> */}
             <li className='dropdown'>
               <a href='#' className='dropdown-toggle' data-toggle='dropdown'>
                 <img src={userInfo.photo} className='img-circle' alt='Avatar' />{' '}
@@ -122,6 +127,11 @@ const Nav = props => {
                 <li>
                   <Link to='/admin/users/register' >
                     <i className='lnr lnr-exit'></i> <span>S'enregistrer</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link to='/admin/users/list' >
+                    <i className='lnr lnr-exit'></i> <span>Liste des utilisateurs</span>
                   </Link>
                 </li>
               </ul>
