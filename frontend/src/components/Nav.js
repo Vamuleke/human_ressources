@@ -113,26 +113,26 @@ const Nav = props => {
                     <i className='lnr lnr-user'></i> <span>Mon Profil</span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <a href='#'>
                     <i className='lnr lnr-cog'></i> <span>Paramètres</span>
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <Link to='/#signout' onClick={signoutHandler}>
                     <i className='lnr lnr-exit'></i> <span>Déconnexion</span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to='/admin/users/register' >
                     <i className='lnr lnr-exit'></i> <span>S'enregistrer</span>
                   </Link>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <Link to='/admin/users/list' >
                     <i className='lnr lnr-exit'></i> <span>Liste des utilisateurs</span>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </li>
           </ul>

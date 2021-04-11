@@ -51,14 +51,14 @@ const AgentHome = (props) => {
       {
         name: <h4>Naissance</h4>,
         selector: (row, index) => {
-          return <h5>{moment(row.birthday).format("DD-MM-YYYY")}</h5>;
+          return <h5>{moment(row.birthday).format("DD/MM/YYYY")}</h5>;
         },
         sortable: true,
       },
       {
         name: <h4>Sexe</h4>,
         selector: (row, index) => {
-          return <h5>{row.sex}</h5>;
+          return <h5>{row.sex === "M" ? "Masculin" : "Féminin"}</h5>;
         },
         sortable: true,
       },

@@ -26,6 +26,50 @@ projectRouter.post ('/', expressAsyncHandler (async (req, res) => {
     res.status (201).send (createdProject)
 }))
 
+// SUPPRESSION D'UN PROJET
+projectRouter.delete ('/:id', expressAsyncHandler (async (req, res) => {
+    const project = await Project.findById (req.params.id)
+
+    if (project) {
+        await Project.deleteOne ({_id : req.params.id}, (err) => {
+            if (err) {
+                response.send ({message : "Project non supprimé. Il y a eu une erreur."})
+            }
+        })
+        res.send (project)
+    } else {
+        res.status (400).send ({message : "Ce project n'existe pas."})
+    }
+}))
+
+// MISE A JOUR DU PROJET
+projectRouter.put ('/:id', expressAsyncHandler (async (req, res) => {
+    const project = await Project.findById (req.params.id)
+
+    if (project) {
+        await Project.updateOne ({_id : req.params.id}, req.body, (err, res) => {
+            if (err) throw err
+        })
+
+        const updatedProject = await Project.findById (req.params.id)
+        res.send (updatedProject)
+
+    } else {
+        res.status (404).send ({message : "Cet project n'existe pas."})
+    }
+}))
+
+// AFFICHAGE D'UN SINGLE PROJECT
+projectRouter.get ('/:id', expressAsyncHandler (async (req, res) => {
+    const project = await Project.findById (req.params.id).populate ('projectResponsible')
+
+    if (project) {
+        res.send (project)
+    } else {
+        res.status (404).send ({message : "Ce projet n'existe pas."})
+    }
+}))
+
 // projectRouter.get ('/:status', expressAsyncHandler (async (req, res) => {
 //     const project = await Project.find ({status : req.params.status}).populate ('projectResponsible')
 

@@ -23,7 +23,7 @@ const AgentDetails = (props) => {
       <div className="main-content">
         <div className="col-md-12">
           {error ? (
-            <h2>Aucune donnée à afficher</h2>
+            <h2 className="text-center">Aucune donnée à afficher</h2>
           ) : (
             <div className="card mt-4 mb-5">
               <div className="card-header">

@@ -72,7 +72,7 @@ const ProjectCreate = () => {
 
     dispatch(createProject(project));
     clearFields();
-    toast.success("Projet crée avec succès", {
+    toast.success("Projet créé avec succès", {
       position: toast.POSITION.BOTTOM_RIGHT,
     });
   };

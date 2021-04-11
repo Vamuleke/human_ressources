@@ -21,6 +21,7 @@ import MyInfos from "./components/agents/MyInfos";
 import ProjectsAgent from "./components/agents/ProjectsAgent";
 import RegisterList from "./components/RegisterList";
 import AppChat from "./components/tchat/App";
+import ProjectDetails from "./components/projects/ProjectDetails";
 
 const App = () => {
   return (
@@ -59,6 +60,7 @@ const App = () => {
 
           <Route exact path="/admin/projects" component={ProjectHome} />
           <Route path="/admin/projects/create" component={ProjectCreate} />
+          <Route exact path="/admin/projects/:id" component={ProjectDetails} />
 
           {/* ============ AGENT ADMIN ========== */}
           <Route path="/agent/myinfos" component={MyInfos} />

@@ -108,7 +108,7 @@ const NavAgent = props => {
                 <i className='icon-submenu lnr lnr-chevron-down'></i>
               </a>
               <ul className='dropdown-menu'>
-                <li>
+                {/* <li>
                   <Link to='/admin/users/profile'>
                     <i className='lnr lnr-user'></i> <span>Mon Profil</span>
                   </Link>
@@ -117,13 +117,13 @@ const NavAgent = props => {
                   <a href='#'>
                     <i className='lnr lnr-cog'></i> <span>Paramètres</span>
                   </a>
-                </li>
+                </li> */}
                 <li>
                   <Link to='/#signout' onClick={signoutHandler}>
                     <i className='lnr lnr-exit'></i> <span>Déconnexion</span>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to='/admin/users/register' >
                     <i className='lnr lnr-exit'></i> <span>S'enregistrer</span>
                   </Link>
@@ -132,7 +132,7 @@ const NavAgent = props => {
                   <Link to='/admin/users/list' >
                     <i className='lnr lnr-exit'></i> <span>Liste des utilisateurs</span>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </li>
           </ul>

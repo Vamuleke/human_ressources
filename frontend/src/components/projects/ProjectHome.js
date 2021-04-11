@@ -2,18 +2,18 @@ import React, { useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { useSelector, useDispatch } from "react-redux";
-import { getProjectInfos } from "../../actions/projectActions";
+import { deleteProject, getProjectInfos } from "../../actions/projectActions";
 import LoadingBox from "../LoadingBox";
 import MessageBox from "../MessageBox";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import ProjectUpdateModal from "./ProjectUpdateModal";
 
 const ProjectHome = () => {
   const dispatch = useDispatch();
   const projectInfos = useSelector((state) => state.projectInfos);
   const { loading, error, project } = projectInfos;
 
-  useEffect(() => {
-    dispatch(getProjectInfos());
-  }, [dispatch]);
 
   const columns = useMemo(() => [
     // {
@@ -60,7 +60,7 @@ const ProjectHome = () => {
         return (
           <>
             <Link
-              to="#view"
+              to={`/admin/projects/${row._id}`}
               className="dropdown-item text-secondary"
               data-toggle="tooltip"
               data-placement="left"
@@ -71,6 +71,9 @@ const ProjectHome = () => {
             <Link
               to="#update"
               className="dropdown-item text-primary"
+              data-toggle="modal"
+              data-target={`#projectUpdateModal-${row._id}`}
+              data-placement="left"
               title="Modifier"
             >
               <i className="fa fa-edit" data-toggle="tooltip"></i>
@@ -81,14 +84,45 @@ const ProjectHome = () => {
               data-toggle="tooltip"
               data-placement="left"
               title="Supprimer"
+              onClick={(e) => deleteProjectNow (e, row._id)}
             >
               <i className="fa fa-trash"></i>
             </Link>
+
+            <ProjectUpdateModal
+              project = {{
+                _id: row._id,
+                projectName : row.projectName,
+                projectDeadline : row.projectDeadline,
+                projectCreateDate : row.projectDeadline,
+                tasks : row.tasks,
+                projectResponsible : row.projectResponsible
+              }}
+            />
           </>
         );
       },
+      sortable : false
     },
-  ]);
+  ], []);
+
+  // SUPPRESSION DU PROJET
+  const deleteProjectNow = (e, id) => {
+    //e.preventDefault ()
+
+    if (window.confirm ("Voulz-vous vraiment supprimer ?")) {
+      dispatch (deleteProject (id))
+      //dispatch(getProjectInfos());
+      toast.success("Projet supprimé avec succès", {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    }
+  }
+
+  // USEEFFECT
+  useEffect(() => {
+    dispatch(getProjectInfos());
+  }, [dispatch]);
 
   return (
     <div className="main">
